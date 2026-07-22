@@ -1,8 +1,7 @@
 # The excess floor of Seymour's Second Neighbourhood Conjecture
 
-> **Status: pre-release staging.** The accompanying note (`note/`) is being
-> finalised; wording of the definitions below will be aligned with it before
-> v0.1.0.
+> **Released** as v0.1.0 (2026-07-23). Citable note: `note/note_draft_v1.pdf`.
+> DOI: [10.5281/zenodo.21497370](https://doi.org/10.5281/zenodo.21497370)
 
 We define the quantitative invariant
 
@@ -149,10 +148,10 @@ verifiability of the claims, not on the nature of the authors.
 
 ## Cite as
 
-> Daiki Tahara, *The excess floor of Seymour's conjecture: ring
-> constructions and computational lower bounds*, 2026.
+> Daiki Tahara, *Measuring the moat: excess bounds near Seymour's second
+> neighbourhood conjecture*, 2026.
 > With Claude (Anthropic) as AI collaborators.
-> DOI: [Zenodo DOI — added at v0.1.0 release]
+> DOI: [10.5281/zenodo.21497370](https://doi.org/10.5281/zenodo.21497370)
 
 ## License
 
