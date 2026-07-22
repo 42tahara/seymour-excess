@@ -1,0 +1,71 @@
+{
+ "invariant": "E_delta>=8(n): evolutionary upper bounds (measured)",
+ "date": "2026-07-22",
+ "in_progress": "fresh divisor-desert probes n=49/50/53 running; results appended when complete",
+ "rows": [
+  {
+   "n": 25,
+   "generations": 40,
+   "best_excess": 12,
+   "best_nsat": 9,
+   "source": "evolve_n25.json",
+   "note": ""
+  },
+  {
+   "n": 30,
+   "generations": 40,
+   "best_excess": 3,
+   "best_nsat": 3,
+   "source": "evolve_n30.json",
+   "note": ""
+  },
+  {
+   "n": 35,
+   "generations": 40,
+   "best_excess": 7,
+   "best_nsat": 4,
+   "source": "evolve_n35.json",
+   "note": ""
+  },
+  {
+   "n": 40,
+   "generations": 40,
+   "best_excess": 23,
+   "best_nsat": 21,
+   "source": "evolve_n40.json",
+   "note": ""
+  },
+  {
+   "n": 45,
+   "generations": 40,
+   "best_excess": 21,
+   "best_nsat": 20,
+   "source": "evolve_n45.json",
+   "note": ""
+  },
+  {
+   "n": 50,
+   "generations": 152,
+   "best_excess": 5,
+   "best_nsat": 5,
+   "source": "champion_28da4a1e.json (sha1 28da4a1e)",
+   "note": "main line; re-confirmed by 152-generation control run"
+  },
+  {
+   "n": 60,
+   "generations": 40,
+   "best_excess": 33,
+   "best_nsat": 9,
+   "source": "evolve_n60.json",
+   "note": ""
+  },
+  {
+   "n": 75,
+   "generations": 13,
+   "best_excess": 3,
+   "best_nsat": 3,
+   "source": "evolve_n75.json",
+   "note": "partial run (stopped at gen 13; already at ring bound)"
+  }
+ ]
+}

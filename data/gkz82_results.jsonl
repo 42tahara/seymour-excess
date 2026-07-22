@@ -1,0 +1,17 @@
+{"conjecture": "GKZ-8.2", "k": 3, "n": 7, "allow_digons": false, "status": "INFEASIBLE", "wall_time_seconds": 0.012274026870727539}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 8, "allow_digons": false, "status": "INFEASIBLE", "wall_time_seconds": 0.09298205375671387}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 9, "allow_digons": false, "status": "INFEASIBLE", "wall_time_seconds": 0.07534313201904297}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 10, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 0.15485429763793945}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 11, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 0.17246627807617188}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 12, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 0.935006856918335}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 13, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 1.5895559787750244}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 14, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 3.948470115661621}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 15, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 7.002494812011719}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 16, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 9.859442949295044}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 17, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 22.35806679725647}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 18, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 36.734057903289795}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 19, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 68.90624713897705}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 20, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 113.89983105659485}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 21, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 177.53631114959717}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 22, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 280.21142768859863}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 23, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 424.42069125175476}
