@@ -96,9 +96,13 @@ open question, with a date, is part of what this repository claims.
 
 1. **Is E_{δ≥8}(n) ≥ 3 for every n ≥ 17?** We conjecture yes. Proven only
    at n = 17 (T2); the CP-SAT search for excess ≤ 2 at n = 18..22 exhausts
-   its time budget undecided (`data/excess2_results.jsonl`). A
-   tournament-restricted variant (min out-degree ≥ 8 forces n ≥ 17) is
-   being scanned as an adversarial test of the same conjecture.
+   its time budget undecided (`data/excess2_results.jsonl`). The
+   tournament-restricted variant ran the full range n = 17..28: every
+   instance hit its 1-hour budget undecided
+   (`data/excess2_tournament.jsonl`; the n = 17 case is in fact INFEASIBLE
+   by inheritance from T2, since tournaments are a subclass). Twelve
+   budget-exhausted instances in a row: the conjecture is at least not
+   cheaply refutable, even tournament-restricted.
 2. **Does the floor equal the minimal legal skeleton size?** The measured
    floor at the prime n = 53 (excess 5, no legal skeleton) now **refutes
    the naive form** of this hypothesis: rings are sufficient for the floor
