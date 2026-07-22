@@ -234,7 +234,24 @@ def _main_locked():
             note = db['notes'][-1] if db['notes'] else ""
             prompt = f"{TASK}\n\nStrategy note:\n{note}\n\nExemplars:\n{shown}"
             try:
-                code = extract_code(llm(MUTATOR_MODEL, prompt))
+                resp = llm(MUTATOR_MODEL, prompt)
+                consecutive_failures = 0        # the API answered: not an outage
+            except Exception as ex_:
+                # ONLY LLM-call failures are systemic (auth/network/rate limit).
+                # Errors from model-generated code are ordinary noise and must
+                # never trip the outage abort (lesson: n49b false abort, gen 22).
+                print(f"gen {g} island {isl_i}: LLM call failed "
+                      f"({type(ex_).__name__}: {ex_})")
+                consecutive_failures += 1
+                if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                    save_db(db)
+                    sys.exit(f"gen {g}: {consecutive_failures} consecutive LLM "
+                             "failures (auth/network outage?) — aborting instead "
+                             "of burning empty generations. DB saved; rerun to "
+                             "resume.")
+                continue
+            try:
+                code = extract_code(resp)
                 try:
                     s, A = run_candidate(code)
                 except Timeout:
@@ -244,7 +261,6 @@ def _main_locked():
                     print(f"gen {g} island {isl_i}: timeout, retrying with 1/10 loops")
                     code = rescued
                     s, A = run_candidate(code)
-                consecutive_failures = 0
                 if s is None:
                     print(f"gen {g} island {isl_i}: invalid matrix (shape/2-cycle/diagonal)")
                 else:
@@ -259,12 +275,6 @@ def _main_locked():
                         open(f'SOLUTION_PROGRAM_gen{g}.py', 'w').write(code)
             except Exception as ex_:
                 print(f"gen {g} island {isl_i}: candidate failed ({type(ex_).__name__}: {ex_})")
-                consecutive_failures += 1
-                if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
-                    save_db(db)
-                    sys.exit(f"gen {g}: {consecutive_failures} consecutive candidate "
-                             "failures (auth/network outage?) — aborting instead of "
-                             "burning empty generations. DB saved; rerun to resume.")
             island.sort(key=lambda e: e['score'][0])
             del island[POP_CAP:]
         if g % MIGRATE_EVERY == 0:               # ring migration of champions
