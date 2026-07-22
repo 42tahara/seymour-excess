@@ -36,7 +36,7 @@ Seymour's second neighbourhood conjecture}
 % [v2 resolved: author confirmed]
 \author{Daiki Tahara}
 \address{Independent researcher, Osaka, Japan}
-\thanks{Version 1.0 --- 2026-07-23.}
+\thanks{Version 1.1 --- 2026-07-23.}
 
 \begin{document}
 
@@ -350,12 +350,21 @@ checkable proof certificate is currently produced, and obtaining one via a
 proof-logging solver is left as future work.
 \end{proof}
 
+Proposition~\ref{thm:e17} may thus be read as a computer-assisted
+verification --- in exceeding form ($\exc \ge 3$ rather than $\ge 2$) ---
+of the $n = 17$, $\delta^+ \ge 8$ case of the conjecture of
+\cite{DaraFrancisJacobNarayanan2022} that every sink-free oriented graph
+has at least two Seymour vertices.
+
 For $18 \le n \le 22$ the same computation is UNKNOWN within 3600~s each;
 the direct method's reach ends near $n = 17$.
 
 \subsection*{Tournament rigidity}
 By \cite{HavetThomasse2000}, sink-free tournaments have at least two
-satisfied vertices; whether \emph{exactly two, both tight} is attainable in
+satisfied vertices. Dara, Francis, Jacob and Narayanan conjecture that the
+same holds for every sink-free oriented graph
+\cite{DaraFrancisJacobNarayanan2022} (cf.\ Problem~1 in
+\S\ref{sec:open}). Whether \emph{exactly two, both tight} is attainable in
 a tournament (which, if the tournament also has $\delta^+ \ge 8$, would
 give $\exc = 2$ and refute any $E \ge 3$-type bound in the
 tournament-dense regime) appears to be open. Our CP-SAT scans of the
@@ -422,8 +431,12 @@ communication, July 2026).
 
 \begin{enumerate}
 \item \textbf{Uniform floor.} Is there $c \ge 2$ with $E(n) \ge c$ for all
-  $n$? All evidence above is consistent with $E(n) \ge 3$; we know only
-  $E(17) \ge 3$ and, conditionally on SSNC, $E(n) \ge 1$.
+  $n$? The case $c = 2$ is precisely the restriction to strongly connected
+  hosts with $\delta^+ \ge 8$ of a conjecture of Dara, Francis, Jacob and
+  Narayanan \cite{DaraFrancisJacobNarayanan2022}: every sink-free oriented
+  graph contains at least two Seymour vertices. All evidence above is
+  consistent with the stronger $E(n) \ge 3$; we know only $E(17) \ge 3$
+  and, conditionally on SSNC, $E(n) \ge 1$.
 \item \textbf{Regularity of $E$.} The best known upper bounds lie in
   $\{3,4,5,6\}$ among the measured orders between 24 and 75,
   % [v2 resolved]
