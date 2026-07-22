@@ -96,6 +96,9 @@ class Timeout(Exception):
     pass
 
 def run_candidate(code):
+    """Returns (score_tuple_or_None, matrix). The matrix is kept so that an
+    improving candidate can be persisted to disk with its adjacency the moment
+    it is scored — a discovery must never exist only in process memory."""
     def handler(signum, frame):
         raise Timeout()
     ns = {'np': np, 'numpy': np, 'N': N, 'score': score,
@@ -104,7 +107,8 @@ def run_candidate(code):
     signal.alarm(TIMEOUT_S)
     try:
         exec(code, ns)
-        return score(ns['construct']())
+        A = ns['construct']()
+        return score(A), A
     finally:
         signal.alarm(0)
 
@@ -116,6 +120,57 @@ def shrink_loops(code, factor=10):
 
 def code_key(code):
     return hashlib.sha1(code.encode()).hexdigest()
+
+INCOMING_DIR = 'incoming'
+
+def persist_best(code, s, A, gen, island_i):
+    """Kill-resistance in code, not ops: every island-best improvement is
+    written to incoming/ (atomically, with code+adjacency+hashes) the moment
+    it is scored. Lesson of 2026-07-22: an excess-8 candidate at n=53 lived
+    only in a killed process's memory and was lost."""
+    os.makedirs(INCOMING_DIR, exist_ok=True)
+    Ai = (np.asarray(A) != 0).astype(int)
+    adj = {int(i): [int(j) for j in np.nonzero(Ai[i])[0]]
+           for i in range(len(Ai))}
+    csha = code_key(code)
+    gsha = hashlib.sha1(json.dumps(adj, sort_keys=True).encode()).hexdigest()
+    rec = {'N': N, 'gen': gen, 'island': island_i, 'score': list(s),
+           'code_sha1': csha, 'graph_sha1': gsha, 'code': code, 'adj': adj}
+    path = os.path.join(INCOMING_DIR, f'n{N}_score{s[0]}_{csha[:8]}.json')
+    tmp = path + '.tmp'
+    json.dump(rec, open(tmp, 'w'))
+    os.replace(tmp, path)
+    print(f"gen {gen} island {island_i}: improvement persisted -> {path}")
+
+def acquire_lock():
+    """One PID lockfile per DB: refuse a second evolve.py on the same lineage.
+    Stale locks (dead PID) are taken over."""
+    lock = DB_PATH + '.lock'
+    while True:
+        try:
+            fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            os.write(fd, str(os.getpid()).encode())
+            os.close(fd)
+            return lock
+        except FileExistsError:
+            try:
+                pid = int(open(lock).read().strip())
+            except (ValueError, OSError):
+                pid = None
+            alive = False
+            if pid is not None:
+                try:
+                    os.kill(pid, 0)
+                    alive = True
+                except ProcessLookupError:
+                    alive = False
+                except PermissionError:
+                    alive = True          # exists under another user
+            if alive:
+                sys.exit(f"another evolve.py (pid {pid}) already holds {lock}; "
+                         "refusing double launch")
+            print(f"stale lock {lock}; taking over")
+            os.unlink(lock)
 
 def add_entry(island, entry):
     keys = {code_key(e['code']) for e in island}
@@ -136,7 +191,7 @@ def load_db():
     db = {'gen': 0, 'islands': [[] for _ in range(ISLANDS)], 'notes': []}
     for i, code in enumerate(seed_functions()):
         try:
-            s = run_candidate(code)
+            s, _ = run_candidate(code)
             if s is not None:
                 add_entry(db['islands'][i % ISLANDS],
                           {'code': code, 'score': list(s), 'gen': 0})
@@ -153,6 +208,13 @@ def exemplars(island):
     return sorted(island, key=lambda e: e['score'][0])[:TOP_K]
 
 def main():
+    lock = acquire_lock()
+    try:
+        _main_locked()
+    finally:
+        os.unlink(lock)
+
+def _main_locked():
     db = load_db()
     print(f"start: gen {db['gen']}, island sizes {[len(i) for i in db['islands']]}")
     for g in range(db['gen'] + 1, db['gen'] + 1 + GENERATIONS):
@@ -169,17 +231,20 @@ def main():
             try:
                 code = extract_code(llm(MUTATOR_MODEL, prompt))
                 try:
-                    s = run_candidate(code)
+                    s, A = run_candidate(code)
                 except Timeout:
                     rescued = shrink_loops(code)
                     if rescued == code:
                         raise
                     print(f"gen {g} island {isl_i}: timeout, retrying with 1/10 loops")
                     code = rescued
-                    s = run_candidate(code)
+                    s, A = run_candidate(code)
                 if s is None:
                     print(f"gen {g} island {isl_i}: invalid matrix (shape/2-cycle/diagonal)")
                 else:
+                    prev_best = min((e['score'][0] for e in island), default=None)
+                    if prev_best is None or s[0] < prev_best:
+                        persist_best(code, s, A, g, isl_i)
                     add_entry(island, {'code': code, 'score': list(s), 'gen': g})
                     best = min(e['score'][0] for e in island)
                     print(f"gen {g} island {isl_i}: candidate {s[0]} (nsat {s[1]})  island best {best}")

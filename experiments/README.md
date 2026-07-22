@@ -48,6 +48,12 @@ is saved atomically each generation, so re-running with the same `SEYMOUR_DB`
 resumes cleanly. A subprocess-based sandbox with a hard kill would fix this
 properly.
 
+Two crash-safety measures are built in: every island-best improvement is
+persisted immediately to `incoming/` (code + adjacency + sha1 hashes,
+atomic write), so a killed or hung process cannot take a discovery with it;
+and a per-DB PID lockfile refuses a second `evolve.py` on the same lineage
+(stale locks from dead processes are taken over automatically).
+
 ## What is deliberately not included
 
 Raw lineage databases (`evolve_db*.json`) and run logs are excluded from the
