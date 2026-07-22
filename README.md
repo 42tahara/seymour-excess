@@ -63,7 +63,9 @@ note/            citable PDF note (in preparation)
 constructions/   pure_ring.py, power_ring.py — build + self-verify witnesses
 verify/          independent checkers (no code shared with the pipeline):
                  verify_ssnc.py, pisa_check.py, check_claims.py,
-                 check_hashes.py, sensitivity.py
+                 check_hashes.py, sensitivity.py, independent_fable.py
+                 (the last written from definitions only by a third author —
+                 three implementations, two authors, one graph)
 data/            witness graphs (sha1-manifested), sweep table,
                  CP-SAT proof logs (excess2_results.jsonl, gkz82_*.jsonl)
 experiments/     the full search pipeline (evolution, n-sweep, CP-SAT models)

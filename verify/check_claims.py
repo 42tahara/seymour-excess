@@ -119,6 +119,21 @@ def check_t6():
             f"n in {ns[0]}..{ns[-1]} (hypothesis graphs exist at each n)")
 
 
+def check_o1p():
+    """O1' (n=53 witness): third, author-independent implementation
+    (verify/independent_fable.py, stdlib only) agrees on excess 5."""
+    out = subprocess.run(
+        [sys.executable, os.path.join(HERE, "independent_fable.py"),
+         os.path.join(DATA, "champion_n53_ca40b396.json")],
+        capture_output=True, text=True)
+    assert out.returncode == 0, out.stderr
+    text = out.stdout
+    assert "excess=5" in text and "digons=0" in text \
+        and "strongly_connected=True" in text \
+        and "[(18, 1), (34, 0), (35, 0), (36, 0)]" in text, text
+    return "Fable stdlib implementation agrees: excess 5, survivors 18(+1)/34/35/36"
+
+
 def check_hashes():
     """Manifest integrity."""
     out = subprocess.run([sys.executable,
@@ -128,10 +143,11 @@ def check_hashes():
     return out.stdout.strip().splitlines()[-1]
 
 
-CHECKS = {"t1": check_t1, "t1p": check_t1p, "o1": check_o1, "t5": check_t5,
+CHECKS = {"t1": check_t1, "t1p": check_t1p, "o1": check_o1,
+          "o1p": check_o1p, "t5": check_t5,
           "t2": check_t2, "t6": check_t6, "hashes": check_hashes,
           "t2-full": check_t2_full}
-FAST = ["hashes", "t1", "t1p", "o1", "t5", "t2", "t6"]
+FAST = ["hashes", "t1", "t1p", "o1", "o1p", "t5", "t2", "t6"]
 
 
 def main():
