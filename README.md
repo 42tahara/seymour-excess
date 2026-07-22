@@ -44,9 +44,13 @@ checks together take seconds (`make verify-all`). Dependencies: `numpy` and
 
 Measured evolutionary upper bounds per n (not claims — search results;
 see `data/en_sweep.json` for provenance): E(25)→12, E(30)→3, E(35)→7,
-E(40)→23, E(45)→21, E(50)→5, E(60)→33, E(75)→3. Note the evolution hits the
-ring bound exactly at n = 30, 50, 75 and spikes on the "divisor deserts"
-(25, 35) that T1′ has since bridged constructively.
+E(40)→23, E(45)→21, E(49)→17, E(50)→5, E(53)→**10**, E(60)→33, E(75)→3.
+The evolution hits the ring bound exactly at n = 30, 50, 75 and spikes on
+the "divisor deserts" (25, 35, 49) that T1′ has since bridged
+constructively. The prime probe is the surprise: E_{δ≥8}(53) ≤ 10
+(independently verified witness `champion_n53_cdfde747`, 4 margin-0 +
+2 margin-2 vertices) — far below the trivial excess-53 plateau, with no
+ring construction available.
 
 **Known-limits note.** The upper-bound curve (T1/T1′) is constructive; the
 only proven lower bound is the single point T2. The equality
@@ -83,9 +87,12 @@ open question, with a date, is part of what this repository claims.
    survivor ring length). Fresh evolutionary probes at n = 49/50/53 are
    testing its predictions on the former deserts.
 3. **Do primes really resist?** T1′ leaves prime n as deserts (only the
-   trivial t = 1 witness, excess = n). Either a construction beating
-   excess = n at a prime, or a lower-bound argument separating primes,
-   would be significant.
+   trivial t = 1 witness, excess = n), but evolution reached a verified
+   excess of 10 at n = 53 — so primes do not resist strongly. What is the
+   asymmetric structure that replaces the ring, and does an explicit
+   prime-friendly construction exist? (A transient excess-8 candidate at
+   n = 53 was observed but lost before verification; treat 8 as a plausible
+   target, not a claim.)
 4. **δ = 8 local feasibility.** The δ = 7 local INFEASIBLE argument
    (arXiv:2606.30588) does not extend directly: 12 of 340 rows of our
    δ = 8 generalisation are locally consistent (all in the b = 7, k = 3

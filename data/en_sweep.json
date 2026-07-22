@@ -1,7 +1,7 @@
 {
  "invariant": "E_delta>=8(n): evolutionary upper bounds (measured)",
  "date": "2026-07-22",
- "in_progress": "fresh divisor-desert probes n=49/50/53 running; results appended when complete",
+ "in_progress": "n=50 fresh probe confirmed floor 5 at gen 0 (seed divisor-ring), never improved in 40 gens",
  "rows": [
   {
    "n": 25,
@@ -44,12 +44,28 @@
    "note": ""
   },
   {
+   "n": 49,
+   "generations": 40,
+   "best_excess": 17,
+   "best_nsat": 13,
+   "source": "evolve_n49fresh.json",
+   "note": "fresh desert probe; stagnant from gen 3; constructive bound 7 (T1') not found by evolution"
+  },
+  {
    "n": 50,
    "generations": 152,
    "best_excess": 5,
    "best_nsat": 5,
    "source": "champion_28da4a1e.json (sha1 28da4a1e)",
    "note": "main line; re-confirmed by 152-generation control run"
+  },
+  {
+   "n": 53,
+   "generations": 40,
+   "best_excess": 10,
+   "best_nsat": 6,
+   "source": "champion_n53_cdfde747.json (graph_sha1 3de1b885)",
+   "note": "fresh prime probe, 40 effective generations (one hang + one auth gap excluded); independently verified: 4 margin-0 + 2 margin-2 vertices, min outdeg 9. A transient excess-8 candidate was observed in a killed twin process and lost (unverified; persistence-on-discovery has since been added to evolve.py)"
   },
   {
    "n": 60,
