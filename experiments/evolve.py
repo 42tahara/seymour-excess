@@ -11,7 +11,7 @@ restricted, but treat it as untrusted code anyway.
 """
 import builtins, hashlib, inspect, json, os, re, signal, sys
 import numpy as np
-from evaluate import score, N
+from evaluate import score, N, DELTA
 
 GENERATIONS = int(sys.argv[1]) if len(sys.argv) > 1 else 50
 DB_PATH = os.environ.get('SEYMOUR_DB', 'evolve_db.json')
@@ -40,10 +40,10 @@ Score = 1000000*degdef + 10000*sccmiss + excess. The PRIMARY objective is
 excess = sum_v max(0, |N++(v)|-|N+(v)|+1): it is 0 exactly when every vertex
 is strictly deficient, i.e. a counterexample, and unlike counting satisfied
 vertices it rewards shaving margin off ANY vertex. degdef punishes every
-vertex whose out-degree is below 8; sccmiss counts vertices outside the
+vertex whose out-degree is below {DELTA}; sccmiss counts vertices outside the
 largest strongly connected component. Lower is better; 0 refutes the
-conjecture. TWO HARD REQUIREMENTS: (a) every vertex must have out-degree >= 8
-(theorem: any counterexample has min out-degree >= 8; sinks trivially satisfy
+conjecture. TWO HARD REQUIREMENTS: (a) every vertex must have out-degree >= {DELTA}
+(sinks trivially satisfy
 the conjecture, so low-degree tricks are useless and heavily penalised);
 (b) the graph must be strongly connected (a minimal counterexample has no
 proper closed out-set — otherwise the closed module would be a smaller
@@ -138,6 +138,7 @@ def persist_best(code, s, A, gen, island_i):
     csha = code_key(code)
     gsha = hashlib.sha1(json.dumps(adj, sort_keys=True).encode()).hexdigest()
     rec = {'N': N, 'gen': gen, 'island': island_i, 'score': list(s),
+           'delta': DELTA,
            'code_sha1': csha, 'graph_sha1': gsha, 'code': code, 'adj': adj}
     path = os.path.join(INCOMING_DIR, f'n{N}_score{s[0]}_{csha[:8]}.json')
     tmp = path + '.tmp'

@@ -31,6 +31,10 @@ import os
 import numpy as np
 
 N = int(os.environ.get('SEYMOUR_N', '50'))
+# Minimum out-degree constraint. 8 is the theorem-backed value for genuine
+# counterexample search (Kaneko-Locke + arXiv:2606.30588); higher values are
+# EXPERIMENTAL (delta-slide: is the floor a delta>=8 artifact?).
+DELTA = int(os.environ.get('SEYMOUR_DELTA', '8'))
 
 def score(A):
     A = np.asarray(A)
@@ -46,7 +50,7 @@ def score(A):
     d = n2.astype(np.int32) - out1
     nsat = int((d >= 0).sum())
     excess = int(np.maximum(0, d + 1).sum())
-    degdef = int(np.maximum(0, 8 - out1).sum())
+    degdef = int(np.maximum(0, DELTA - out1).sum())
     R = Ab | np.eye(N, dtype=bool)               # reachability by repeated squaring
     for _ in range(int(np.ceil(np.log2(N))) + 1):
         R = (R.astype(np.uint8) @ R.astype(np.uint8)) > 0
