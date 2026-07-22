@@ -115,8 +115,10 @@ def check_t6():
     hyp_ns = sorted(r["n"] for r in hyp
                     if r["status"] in ("FEASIBLE", "OPTIMAL"))
     assert set(ns) <= set(hyp_ns), "INFEASIBLE n lacking hypothesis witness"
+    gaps = sorted(set(range(ns[0], ns[-1] + 1)) - set(ns))
+    rng = f"{ns[0]}..{ns[-1]}" + (f" except {gaps} (undecided)" if gaps else "")
     return (f"n=7..9 re-proved live; recorded scan: no counterexample for "
-            f"n in {ns[0]}..{ns[-1]} (hypothesis graphs exist at each n)")
+            f"n in {rng} (hypothesis graphs exist at each n)")
 
 
 def check_o1p():
