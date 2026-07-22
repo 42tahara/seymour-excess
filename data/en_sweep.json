@@ -44,12 +44,20 @@
    "note": ""
   },
   {
+   "n": 47,
+   "generations": 40,
+   "best_excess": 9,
+   "best_nsat": 6,
+   "source": "champion_n47_a76a5072.json (graph_sha1 embedded)",
+   "note": "2026-07-22 survey: independent fresh lineage; verified (3 impl). Sibling fresh lineage stuck at 26, ring-approx seed lineage at 19."
+  },
+  {
    "n": 49,
    "generations": 40,
-   "best_excess": 17,
-   "best_nsat": 13,
-   "source": "evolve_n49fresh.json",
-   "note": "fresh desert probe; stagnant from gen 3; constructive bound 7 (T1') not found by evolution"
+   "best_excess": 6,
+   "best_nsat": 5,
+   "source": "champion_n49_ad5efc8b.json",
+   "note": "2026-07-22 survey: fresh lineage beat the T1' constructive bound 7 at gen 12; verified (3 impl). Ring-seeded lineage stayed at its seed value 7 for 40 gens. Earlier 40-gen fresh probe had stalled at 17."
   },
   {
    "n": 50,
@@ -68,6 +76,14 @@
    "note": "independent fresh lineage (track B), gen 35; verified: 3 margin-0 + 1 margin-1 vertices, min outdeg 17. Earlier excess-10 witness (champion_n53_cdfde747) retained as data. Extended to 80 generations: no improvement after gen 35; together with the exhaustive depth-2 search around the keystone (171288 pairs, no decrease), excess 5 is robust at n=53. Control: a ring-approximation seed (unequal 7-layer C_7^2 + in-star, excess 33) stagnated for 40 generations \u2014 at primes the ring blueprint fails even as a starting point; the floor is reached by non-ring asymmetric structure."
   },
   {
+   "n": 59,
+   "generations": 40,
+   "best_excess": 7,
+   "best_nsat": 6,
+   "source": "champion_n59_24dc568c.json",
+   "note": "2026-07-22 survey: independent fresh lineage; verified (3 impl). Sibling fresh and ring lineages stuck at 35."
+  },
+  {
    "n": 60,
    "generations": 40,
    "best_excess": 33,
@@ -83,5 +99,12 @@
    "source": "evolve_n75.json",
    "note": "partial run (stopped at gen 13; already at ring bound)"
   }
- ]
+ ],
+ "delta_slide": {
+  "n": 50,
+  "delta9_best": 5,
+  "delta10_best": 5,
+  "generations": 40,
+  "note": "2026-07-22: floor unmoved at delta>=9 and delta>=10 \u2014 the divisor-ring seed (out-degree 10) satisfies both constraints; 40 generations never improved on it. The excess floor is insensitive to the delta detail."
+ }
 }

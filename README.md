@@ -44,13 +44,19 @@ checks together take seconds (`make verify-all`). Dependencies: `numpy` and
 
 Measured evolutionary upper bounds per n (not claims — search results;
 see `data/en_sweep.json` for provenance): E(25)→12, E(30)→3, E(35)→7,
-E(40)→23, E(45)→21, E(49)→17, E(50)→5, E(53)→**5**, E(60)→33, E(75)→3.
+E(40)→23, E(45)→21, E(47)→9, E(49)→**6**, E(50)→5, E(53)→**5**, E(59)→7, E(60)→33, E(75)→3.
 The evolution hits the ring bound exactly at n = 30, 50, 75 and spikes on
 the "divisor deserts" (25, 35, 49) that T1′ has since bridged
 constructively. The prime probe is the surprise: E_{δ≥8}(53) ≤ 5
 (independently verified witness `champion_n53_ca40b396`, 3 margin-0 +
 1 margin-1 vertices, min out-degree 17) — equal to the measured floor at
-n = 50, with no ring construction available at a prime.
+n = 50, with no ring construction available at a prime. The 2026-07-22 survey
+added: E(47)≤9 and E(59)≤7 (primes, one 40-generation lineage each — depth
+comparable to the run that first found 10, not 5, at n = 53, so these may
+be underconverged); E(49)≤6, beating the T1′ constructive bound of 7; and a
+δ-slide at n = 50 showing the floor 5 unmoved under δ≥9 and δ≥10.
+Ring-seeded lineages lost at every point surveyed (5 consecutive negative
+controls).
 
 **Known-limits note.** The upper-bound curve (T1/T1′) is constructive; the
 only proven lower bound is the single point T2. The equality
