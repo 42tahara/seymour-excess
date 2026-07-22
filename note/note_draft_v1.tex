@@ -36,6 +36,8 @@ Seymour's second neighbourhood conjecture}
 % [v2 resolved: author confirmed]
 \author{Daiki Tahara}
 \address{Independent researcher, Osaka, Japan}
+% [publication TODO: replace with "v1.0 --- <date>" and drop the
+% internal-review line at release]
 \thanks{Draft v0.3 --- 2026-07-22 --- for internal review
 (Raa / Fable / Code).}
 
@@ -357,14 +359,17 @@ the direct method's reach ends near $n = 17$.
 \subsection*{Tournament rigidity}
 By \cite{HavetThomasse2000}, sink-free tournaments have at least two
 satisfied vertices; whether \emph{exactly two, both tight} is attainable in
-a tournament (which would give $\exc = 2$ and refute any $E \ge 3$-type
-bound in the tournament-dense regime) appears to be open. Our CP-SAT scans
-of the tournament-restricted question $\exc \le 2$ for $17 \le n \le 28$
-returned twelve consecutive UNKNOWNs at one hour each: the question is not
-cheaply decidable in either direction. We record this as an explicit open
-problem (\S\ref{sec:open}).
-% [v2 note: the n=17 tournament instance is decided (INFEASIBLE) by
-% inheritance from Thm 4.1, tournaments being a subclass]
+a tournament (which, if the tournament also has $\delta^+ \ge 8$, would
+give $\exc = 2$ and refute any $E \ge 3$-type bound in the
+tournament-dense regime) appears to be open. Our CP-SAT scans of the
+tournament-restricted question $\exc \le 2$ with $\delta^+ \ge 8$ for
+$17 \le n \le 28$ returned twelve consecutive UNKNOWNs at one hour each:
+the question is not cheaply decidable in either direction. We record this
+as an explicit open problem (\S\ref{sec:open}).
+% The n=17 tournament instance with delta+ >= 8 is settled twice over: the
+% degree bound forces a regular tournament (out-degree exactly 8), where
+% every vertex is tight and exc = 17; it also follows from Proposition 4.1,
+% which covers all oriented graphs on 17 vertices with delta+ >= 8.
 
 \section{Structure of best-known witnesses: two architectures, one
 dynamics}\label{sec:structure}
@@ -428,8 +433,12 @@ communication, July 2026).
   with the value governed by available skeletons, not by primality. Is $E$
   eventually constant? Monotone in any sense?
 \item \textbf{Tournaments with exactly two tight vertices.} Does a
-  sink-free tournament with exactly two satisfied vertices, both tight,
-  exist? (Twelve one-hour CP-SAT attempts, $17 \le n \le 28$, all UNKNOWN.)
+  tournament with minimum out-degree $\ge 8$ and exactly two satisfied
+  vertices, both tight, exist? (At $n = 17$ the degree bound forces a
+  regular tournament, in which every vertex is tight
+  \cite[Lem.~2.2]{GuoKangZwaneveld2026}, so this case is settled in the
+  negative before any computation; twelve one-hour CP-SAT attempts at
+  $17 \le n \le 28$ returned UNKNOWN.)
 \item \textbf{Keystone family limits.} The transplant family attains $4$
   (at $n=57$) with all survivors tight; is $3$ attainable ring-free? Is the
   family's native floor below the ring floor anywhere?
@@ -466,6 +475,7 @@ Appendix~\ref{app:model}.
 Total LLM API cost of all search and verification reported here:
 USD~65.54.
 
+% [publication TODO: insert repository URL + Zenodo DOI at release]
 Repository: [URL on publication; private at draft time].
 
 
