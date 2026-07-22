@@ -60,8 +60,8 @@ selected orders $24 \le n \le 75$; all witnesses are published with hashes
 and re-verifiable by three independent implementations. A pre-registered
 negative control documents that search attainment values are not floors. A
 computer-assisted infeasibility computation gives $E(17) \ge 3$, and the
-best value observed at $n = 50$ is invariant under raising the degree bound
-to $\delta^+ \ge 9, 10$. Analysis of the best-known witnesses reveals two
+best value observed at $n = 50$ remains unchanged in our searches when the
+degree bound is raised to $\delta^+ \ge 9, 10$. Analysis of the best-known witnesses reveals two
 distinct local architectures with identical local rigidity. We conjecture a
 uniform lower bound $E(n) \ge 3$ and pose the regularity of
 $n \mapsto E(n)$ as an open problem.
@@ -224,7 +224,8 @@ $d_1 = d_2 = t$, margin $0$. The graph is digon-free (arcs between layers
 all point forward; inside a layer only $\to p_i$ arcs exist and $p_i$ sends
 none), strongly connected, with $\delta^+ = t \ge 8$, and $\exc = m$.
 In the layered construction the target $p_i$ lies in the shooter's own
-layer, at directed distance $m \ge 3$ from every impure $v \in L_i$, so
+layer, at directed distance $m \ge 3$ from every impure $v \in L_i$ in the
+unperturbed layered graph, so
 case (ii) of Lemma~\ref{lem:outset} applies and each intra-layer arc costs
 its shooter exactly one unit of margin; every in-neighbour of $v$ (all of
 $L_{i-1}$) sees $p_i$ in its first neighbourhood, so by (iii) no other
@@ -320,7 +321,7 @@ at $5$. We therefore report construction bounds and search attainments in
 separate columns throughout. (Full logs, pre-registration commits, and the
 negative-control seed runs are in the repository.)
 
-\subsection{$\delta$-invariance}\label{sec:delta}
+\subsection{Observed $\delta$-invariance}\label{sec:delta}
 
 At $n = 50$ the best value observed, $5$, is unchanged when the degree
 bound is raised to $\delta^+ \ge 9$ and $\delta^+ \ge 10$ (the divisor-ring witness
@@ -422,7 +423,7 @@ communication, July 2026).
   $n$? All evidence above is consistent with $E(n) \ge 3$; we know only
   $E(17) \ge 3$ and, conditionally on SSNC, $E(n) \ge 1$.
 \item \textbf{Regularity of $E$.} The best known upper bounds lie in
-  $\{3,4,5,6\}$ at every measured order between 24 and 75,
+  $\{3,4,5,6\}$ among the measured orders between 24 and 75,
   % [v2 resolved]
   with the value governed by available skeletons, not by primality. Is $E$
   eventually constant? Monotone in any sense?
@@ -457,9 +458,10 @@ predictions were committed to the repository before the corresponding runs
 (commit hashes in \texttt{docs/}). Division of labour: direction and
 decisions by the human author; supervision, literature, and independent
 verification by Claude (Fable); implementation, search, and solver
-engineering by Claude (Code). All claims in this note are
-machine-verifiable from the accompanying repository, independently of the
-authors.
+engineering by Claude (Code). All witness-based numerical claims are
+independently machine-verifiable from the accompanying repository; the
+computer-assisted infeasibility result has the limitations stated in
+Appendix~\ref{app:model}.
 
 Total LLM API cost of all search and verification reported here:
 USD~65.54.
