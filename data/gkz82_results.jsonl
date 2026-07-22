@@ -20,3 +20,4 @@
 {"conjecture": "GKZ-8.2", "k": 3, "n": 26, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 4084.94159078598}
 {"conjecture": "GKZ-8.2", "k": 3, "n": 27, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 2136.742063999176}
 {"conjecture": "GKZ-8.2", "k": 3, "n": 28, "allow_digons": false, "hypothesis_only": false, "status": "INFEASIBLE", "wall_time_seconds": 2913.9069600105286}
+{"conjecture": "GKZ-8.2", "k": 3, "n": 29, "allow_digons": false, "hypothesis_only": false, "status": "UNKNOWN", "wall_time_seconds": 14400.417732954025}
