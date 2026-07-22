@@ -1,8 +1,8 @@
 # The excess floor of Seymour's Second Neighbourhood Conjecture
 
-> **Status: pre-release staging.** Author attribution, repository name, and the
-> accompanying note (`note/`) are being finalised; wording of the definitions
-> below will be aligned with the note before v0.1.0.
+> **Status: pre-release staging.** The accompanying note (`note/`) is being
+> finalised; wording of the definitions below will be aligned with it before
+> v0.1.0.
 
 We define the quantitative invariant
 
@@ -38,7 +38,7 @@ checks together take seconds (`make verify-all`). Dependencies: `numpy` and
 | T1′ | E_{δ≥8}(n) ≤ min{m≥3 : m\|n, ∃k≥1: 2k<m, k·(n/m)≥8} (C_m^k power ring; T1 is k=1). In particular E(25)≤5, E(35)≤5, E(49)≤7 | theorem candidate (arithmetic in `constructions/power_ring.py` docstring; numeric verification by 2 independent implementations) | `make verify-t1p` |
 | T2 | E_{δ≥8}(17) ≥ 3 | theorem (CP-SAT proof, 219 s) | `make verify-t2` (recorded log) / `make verify-t2-full` (re-prove, ~4 min) |
 | T5 | The Pisa structure conjecture (arXiv:2601.21563, Conj 5.1) is false: explicit counterexamples at n = 8, 48, 50 and a minimal one at n = 7 | verified, 3 independent implementations | `make verify-t5` |
-| T6 | GKZ Conjecture 8.2 (arXiv:2603.29626) holds for k = 3 up to the scanned n (currently n ≤ 23; scan in progress) | CP-SAT INFEASIBLE; non-vacuous (hypothesis graphs exist at every scanned n) | `make verify-t6` |
+| T6 | GKZ Conjecture 8.2 (arXiv:2603.29626) holds for k = 3 for all n ≤ 24 (scan to n = 30 in progress) | CP-SAT INFEASIBLE; non-vacuous (hypothesis graphs exist at every scanned n) | `make verify-t6` |
 | O1 | Evolved witnesses: E_{δ≥8}(50) ≤ 5 (`champion_28da4a1e`, survivors form a directed pentagon); earlier ≤ 8 (`champion_d74d6509`) | verified graphs (independent checker) | `make verify-o1` |
 | — | Every graph in `data/` matches its recorded hash | — | `make verify-hashes` |
 
@@ -87,7 +87,7 @@ running; their results will be appended to `data/` and the tables above.
 
 ## Cite as
 
-> [AUTHOR — TBC], *The excess floor of Seymour's conjecture: ring
+> Daiki Tahara, *The excess floor of Seymour's conjecture: ring
 > constructions and computational lower bounds*, 2026.
 > With Claude (Anthropic) as AI collaborators.
 > DOI: [Zenodo DOI — added at v0.1.0 release]
