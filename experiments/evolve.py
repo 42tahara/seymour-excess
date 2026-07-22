@@ -23,6 +23,9 @@ ANALYZE_EVERY = 15        # smart-model strategy note frequency
 MUTATOR_MODEL = os.environ.get('MUTATOR_MODEL', 'claude-haiku-4-5')
 ANALYST_MODEL = os.environ.get('ANALYST_MODEL', 'claude-sonnet-4-6')
 TIMEOUT_S = 30            # per-candidate execution budget
+MAX_CONSECUTIVE_FAILURES = 6   # 2 full generations of candidate exceptions
+                               # (auth/network outage etc.) -> abort instead of
+                               # burning generation numbers on an empty loop
 
 TASK = f"""You are evolving Python programs that construct a directed graph
 attacking Seymour's Second Neighbourhood Conjecture (open since 1990) by
@@ -216,6 +219,7 @@ def main():
 
 def _main_locked():
     db = load_db()
+    consecutive_failures = 0
     print(f"start: gen {db['gen']}, island sizes {[len(i) for i in db['islands']]}")
     for g in range(db['gen'] + 1, db['gen'] + 1 + GENERATIONS):
         for isl_i, island in enumerate(db['islands']):
@@ -239,6 +243,7 @@ def _main_locked():
                     print(f"gen {g} island {isl_i}: timeout, retrying with 1/10 loops")
                     code = rescued
                     s, A = run_candidate(code)
+                consecutive_failures = 0
                 if s is None:
                     print(f"gen {g} island {isl_i}: invalid matrix (shape/2-cycle/diagonal)")
                 else:
@@ -253,6 +258,12 @@ def _main_locked():
                         open(f'SOLUTION_PROGRAM_gen{g}.py', 'w').write(code)
             except Exception as ex_:
                 print(f"gen {g} island {isl_i}: candidate failed ({type(ex_).__name__}: {ex_})")
+                consecutive_failures += 1
+                if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                    save_db(db)
+                    sys.exit(f"gen {g}: {consecutive_failures} consecutive candidate "
+                             "failures (auth/network outage?) — aborting instead of "
+                             "burning empty generations. DB saved; rerun to resume.")
             island.sort(key=lambda e: e['score'][0])
             del island[POP_CAP:]
         if g % MIGRATE_EVERY == 0:               # ring migration of champions
