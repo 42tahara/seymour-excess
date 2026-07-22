@@ -51,12 +51,20 @@ constructively. The prime probe is the surprise: E_{δ≥8}(53) ≤ 5
 (independently verified witness `champion_n53_ca40b396`, 3 margin-0 +
 1 margin-1 vertices, min out-degree 17) — equal to the measured floor at
 n = 50, with no ring construction available at a prime. The 2026-07-22 survey
-added: E(47)≤9 and E(59)≤7 (primes, one 40-generation lineage each — depth
-comparable to the run that first found 10, not 5, at n = 53, so these may
-be underconverged); E(49)≤6, beating the T1′ constructive bound of 7; and a
-δ-slide at n = 50 showing the floor 5 unmoved under δ≥9 and δ≥10.
-Ring-seeded lineages lost at every point surveyed (5 consecutive negative
-controls).
+added: E(49)≤6, beating the T1′ constructive bound of 7, and a δ-slide at
+n = 50 showing the floor 5 unmoved under δ≥9 and δ≥10. Ring-seeded lineages
+lost at every point surveyed (5 consecutive negative controls).
+
+**Keystone transplant (same day):** surgically porting the n = 53
+champion's survivor cluster (bulk deletion / cloning, cluster untouched;
+`constructions/transplant.py`, deterministic greedy) gives
+**E(47) ≤ 5 and E(59) ≤ 5** — the first prime bounds matching the n = 50/53
+floor, superseding the evolutionary survey values 9 and 7 and resolving the
+apparent "prime staircase" as pure search-reachability bias. The transplant
+family also realises excess 4 with four margin-0 survivors at n = 57
+(not a bound record there — T1 gives 3 at multiples of 3 — but the first
+keystone graph with the +1 insurance eliminated). Witnesses:
+`data/transplant_n{47,57,59}.json`, triple-verified.
 
 **Known-limits note.** The upper-bound curve (T1/T1′) is constructive; the
 only proven lower bound is the single point T2. The equality
