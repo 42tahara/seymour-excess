@@ -62,10 +62,10 @@
   {
    "n": 53,
    "generations": 40,
-   "best_excess": 10,
-   "best_nsat": 6,
-   "source": "champion_n53_cdfde747.json (graph_sha1 3de1b885)",
-   "note": "fresh prime probe, 40 effective generations (one hang + one auth gap excluded); independently verified: 4 margin-0 + 2 margin-2 vertices, min outdeg 9. A transient excess-8 candidate was observed in a killed twin process and lost (unverified; persistence-on-discovery has since been added to evolve.py)"
+   "best_excess": 5,
+   "best_nsat": 4,
+   "source": "champion_n53_ca40b396.json (graph_sha1 dc922e89)",
+   "note": "independent fresh lineage (track B), gen 35; verified: 3 margin-0 + 1 margin-1 vertices, min outdeg 17. Earlier excess-10 witness (champion_n53_cdfde747) retained as data. Search ongoing."
   },
   {
    "n": 60,

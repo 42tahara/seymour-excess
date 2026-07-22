@@ -44,13 +44,13 @@ checks together take seconds (`make verify-all`). Dependencies: `numpy` and
 
 Measured evolutionary upper bounds per n (not claims — search results;
 see `data/en_sweep.json` for provenance): E(25)→12, E(30)→3, E(35)→7,
-E(40)→23, E(45)→21, E(49)→17, E(50)→5, E(53)→**10**, E(60)→33, E(75)→3.
+E(40)→23, E(45)→21, E(49)→17, E(50)→5, E(53)→**5**, E(60)→33, E(75)→3.
 The evolution hits the ring bound exactly at n = 30, 50, 75 and spikes on
 the "divisor deserts" (25, 35, 49) that T1′ has since bridged
-constructively. The prime probe is the surprise: E_{δ≥8}(53) ≤ 10
-(independently verified witness `champion_n53_cdfde747`, 4 margin-0 +
-2 margin-2 vertices) — far below the trivial excess-53 plateau, with no
-ring construction available.
+constructively. The prime probe is the surprise: E_{δ≥8}(53) ≤ 5
+(independently verified witness `champion_n53_ca40b396`, 3 margin-0 +
+1 margin-1 vertices, min out-degree 17) — equal to the measured floor at
+n = 50, with no ring construction available at a prime.
 
 **Known-limits note.** The upper-bound curve (T1/T1′) is constructive; the
 only proven lower bound is the single point T2. The equality
@@ -81,18 +81,19 @@ open question, with a date, is part of what this repository claims.
    its time budget undecided (`data/excess2_results.jsonl`). A
    tournament-restricted variant (min out-degree ≥ 8 forces n ≥ 17) is
    being scanned as an adversarial test of the same conjecture.
-2. **Does the floor equal the minimal legal skeleton size?** The equality
-   E_{δ≥8}(n) = min m in T1′ is a working hypothesis, supported by the
-   three-point coincidence at n = 50 (floor 5 = evolutionary optimum =
-   survivor ring length). Fresh evolutionary probes at n = 49/50/53 are
-   testing its predictions on the former deserts.
-3. **Do primes really resist?** T1′ leaves prime n as deserts (only the
-   trivial t = 1 witness, excess = n), but evolution reached a verified
-   excess of 10 at n = 53 — so primes do not resist strongly. What is the
-   asymmetric structure that replaces the ring, and does an explicit
-   prime-friendly construction exist? (A transient excess-8 candidate at
-   n = 53 was observed but lost before verification; treat 8 as a plausible
-   target, not a claim.)
+2. **Does the floor equal the minimal legal skeleton size?** The measured
+   floor at the prime n = 53 (excess 5, no legal skeleton) now **refutes
+   the naive form** of this hypothesis: rings are sufficient for the floor
+   where they exist, but not necessary. The surviving question is what
+   invariant does control the floor — the n = 50 three-point coincidence
+   (floor 5 = evolutionary optimum = survivor ring length) still wants an
+   explanation.
+3. **Do primes resist at all?** No: evolution reached a verified excess
+   of 5 at n = 53, equal to the measured floor at n = 50, although T1′
+   offers no construction there. What is the asymmetric structure that
+   replaces the ring, and does an explicit prime-friendly construction
+   exist? The witness has 3 margin-0 + 1 margin-1 vertices — not a clean
+   ring pattern.
 4. **δ = 8 local feasibility.** The δ = 7 local INFEASIBLE argument
    (arXiv:2606.30588) does not extend directly: 12 of 340 rows of our
    δ = 8 generalisation are locally consistent (all in the b = 7, k = 3
