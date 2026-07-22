@@ -275,8 +275,8 @@ inclusion mechanism again, asymmetric and ring-free.
 
 Guided by this structure, a deterministic transplant procedure (delete or
 clone bulk vertices while preserving the cluster;
-\texttt{constructions/transplant.py}) produced explicit witnesses, each
-verified by the three-implementation protocol, establishing
+\texttt{constructions/transplant.py}) produced explicit witnesses
+establishing
 \[
 E(47) \le 5, \qquad E(53) \le 5, \qquad E(59) \le 5,
 \]
@@ -501,8 +501,8 @@ variables $s_{vw}$; for each $v$, an integer $e_v \in \{0, \dots, n\}$.
 
 \subsection*{Completeness of the encoding}
 \begin{lemma}\label{lem:encoding}
-If a strongly connected oriented graph $G$ on $n$ vertices with
-$\delta^+(G) \ge 8$ and $\exc(G) \le c$ exists, then $M_{n,c}$ is feasible.
+If an oriented graph $G$ on $n$ vertices with $\delta^+(G) \ge 8$ and
+$\exc(G) \le c$ exists, then $M_{n,c}$ is feasible.
 \end{lemma}
 
 \begin{proof}
@@ -522,9 +522,9 @@ Proposition~\ref{thm:e17}.
 
 \subsection*{Strong connectivity is not encoded}
 The model deliberately contains \textbf{no} strong-connectivity
-constraint. Lemma~\ref{lem:encoding} therefore applies verbatim to
+constraint, and Lemma~\ref{lem:encoding} correspondingly assumes none:
 \emph{every} oriented graph with $\delta^+ \ge 8$ and $\exc \le c$,
-strongly connected or not: any such graph yields a feasible assignment.
+strongly connected or not, yields a feasible assignment.
 Consequently INFEASIBLE rules out the \emph{larger} class, which is why
 Proposition~\ref{thm:e17} is stated for all oriented graphs and the bound
 $E(17) \ge 3$ for the strongly connected subclass follows a fortiori.
