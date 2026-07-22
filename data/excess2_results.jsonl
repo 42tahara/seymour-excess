@@ -5,3 +5,4 @@
 {"n": 20, "cap": 2, "status": "UNKNOWN", "wall_time_seconds": 3600.044137954712}
 {"n": 21, "cap": 2, "status": "UNKNOWN", "wall_time_seconds": 3600.041723012924}
 {"n": 22, "cap": 2, "status": "UNKNOWN", "wall_time_seconds": 3600.0423831939697}
+{"n": 17, "cap": 2, "status": "INFEASIBLE", "wall_time_seconds": 356.98773193359375, "model_hash": "1d22eb1517b911b1038dedaa2c04984b1568112eeadf697ae34245e1e73ce67b", "ortools_version": "9.15.6755", "tournament": false}

@@ -1,5 +1,6 @@
 | n | construction bound | fresh-search attainment | best | witness (graph sha1) |
 |---|---|---|---|---|
+| 24 | 3 (ring m=3,k=1,t=8) | - | 3 | `2517130b` |
 | 25 | 5 (ring m=5,k=2,t=5) | 12 | 5 | `93072b44` |
 | 27 | 3 (ring m=3,k=1,t=9) | - | 3 | `5b5ae497` |
 | 30 | 3 (ring m=3,k=1,t=10) | 3 | 3 | `(theorem)` |
@@ -17,4 +18,4 @@
 | 60 | 3 (ring m=3,k=1,t=20) | 33 | 3 | `(theorem)` |
 | 75 | 3 (ring m=3,k=1,t=25) | 3 | 3 | `(theorem)` |
 
-All witnesses (re)verified 2026-07-22; hashes are canonical adjacency sha1 (see verify/check_hashes.py). n=57: transplant family also realises 4 (all survivors tight), not a bound record.
+All witnesses (re)verified 2026-07-22; hashes are canonical adjacency sha1 (see verify/check_hashes.py). n=24 is the boundary case with minimum out-degree exactly 8. n=57: transplant family also realises 4 (all survivors tight), not a bound record.

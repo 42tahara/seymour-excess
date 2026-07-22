@@ -81,8 +81,11 @@ def check_t2():
     hit = [r for r in recs if r["n"] == 17 and r["cap"] == 2
            and r["status"] == "INFEASIBLE"]
     assert hit, "no n=17 INFEASIBLE record"
+    latest = hit[-1]
+    prov = " with model_hash+ortools recorded" if "model_hash" in latest else ""
     return (f"n=17 excess<=2 INFEASIBLE on record "
-            f"({hit[0]['wall_time_seconds']:.0f}s); run 't2-full' to re-prove")
+            f"({latest['wall_time_seconds']:.0f}s{prov}); "
+            "run 't2-full' to re-prove")
 
 
 def check_t2_full():

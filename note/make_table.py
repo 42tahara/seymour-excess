@@ -30,6 +30,7 @@ for r in sweep['rows']:
 controls = {p['n']: p['best_excess'] for p in sweep.get('fresh_only_controls', {}).get('points', [])}
 
 WITNESS_FILE = {
+    24: 'pure_ring_n24_m3.json',
     25: 'gkz_ring_n25_m5k2.json', 27: 'pure_ring_n27_m3.json',
     35: 'gkz_ring_n35_m5k2.json', 47: 'transplant_n47.json',
     48: 'pure_ring_n48_m3.json', 49: 'champion_n49_ad5efc8b.json',
@@ -38,7 +39,7 @@ WITNESS_FILE = {
     59: 'transplant_n59.json',
 }
 
-NS = sorted(set(list(search) + [27, 47, 48, 51, 53, 57, 59]))
+NS = sorted(set(list(search) + [24, 27, 47, 48, 51, 53, 57, 59]))
 rows = []
 for n in NS:
     ub = unified_bound(n)
@@ -76,5 +77,6 @@ else:
     for n, c, s, b, w in rows:
         print(f"| {n} | {c} | {s} | {b} | `{w}` |")
     print(f"\nAll witnesses (re)verified {DATE}; hashes are canonical adjacency sha1 "
-          "(see verify/check_hashes.py). n=57: transplant family also realises 4 "
+          "(see verify/check_hashes.py). n=24 is the boundary case with minimum "
+          "out-degree exactly 8. n=57: transplant family also realises 4 "
           "(all survivors tight), not a bound record.")

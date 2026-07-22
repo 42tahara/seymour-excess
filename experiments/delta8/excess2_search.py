@@ -22,6 +22,7 @@ import json
 import time
 
 import numpy as np
+import ortools
 from ortools.sat.python import cp_model
 
 
@@ -96,7 +97,10 @@ def solve_n(n, cap, time_limit, workers, tournament=False):
     t0 = time.time()
     status = solver.Solve(model)
     rec = {"n": n, "cap": cap, "status": solver.StatusName(status),
-           "wall_time_seconds": time.time() - t0}
+           "wall_time_seconds": time.time() - t0,
+           "model_hash": hashlib.sha256(
+               str(model.Proto()).encode()).hexdigest(),
+           "ortools_version": ortools.__version__}
     if rec["status"] in ("FEASIBLE", "OPTIMAL"):
         A = [[1 if i != j and solver.Value(arc[(i, j)]) else 0
               for j in range(n)] for i in range(n)]
