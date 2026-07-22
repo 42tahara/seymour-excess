@@ -65,7 +65,7 @@
    "best_excess": 5,
    "best_nsat": 4,
    "source": "champion_n53_ca40b396.json (graph_sha1 dc922e89)",
-   "note": "independent fresh lineage (track B), gen 35; verified: 3 margin-0 + 1 margin-1 vertices, min outdeg 17. Earlier excess-10 witness (champion_n53_cdfde747) retained as data. Search ongoing."
+   "note": "independent fresh lineage (track B), gen 35; verified: 3 margin-0 + 1 margin-1 vertices, min outdeg 17. Earlier excess-10 witness (champion_n53_cdfde747) retained as data. Search ongoing. Control: a ring-approximation seed (unequal 7-layer C_7^2 + in-star, excess 33) stagnated for 40 generations \u2014 at primes the ring blueprint fails even as a starting point; the floor is reached by non-ring asymmetric structure."
   },
   {
    "n": 60,
