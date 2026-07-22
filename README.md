@@ -64,7 +64,9 @@ apparent "prime staircase" as pure search-reachability bias. The transplant
 family also realises excess 4 with four margin-0 survivors at n = 57
 (not a bound record there — T1 gives 3 at multiples of 3 — but the first
 keystone graph with the +1 insurance eliminated). Witnesses:
-`data/transplant_n{47,57,59}.json`, triple-verified.
+`data/transplant_n{47,57,59}.json`, triple-verified; a 20-generation polish
+run on each transplant found no improvement — the transplant values are
+single-lineage local minima like every other point in this landscape.
 
 **Known-limits note.** The upper-bound curve (T1/T1′) is constructive; the
 only proven lower bound is the single point T2. The equality
