@@ -66,13 +66,13 @@ for n in NS:
 
 if '--tex' in sys.argv:
     print(r"\begin{tabular}{rllll}")
-    print(r"$n$ & construction & search & best & witness \\ \hline")
+    print(r"$n$ & construction & search & best known & witness \\ \hline")
     for n, c, s, b, w in rows:
         w = w.replace('(theorem)', r'\emph{(thm)}')
         print(f"{n} & {c} & {s} & {b} & \\texttt{{{w}}} \\\\")
     print(r"\end{tabular}")
 else:
-    print("| n | construction bound | fresh-search attainment | best | witness (graph sha1) |")
+    print("| n | construction bound | fresh-search attainment | best known | witness (graph sha1) |")
     print("|---|---|---|---|---|")
     for n, c, s, b, w in rows:
         print(f"| {n} | {c} | {s} | {b} | `{w}` |")

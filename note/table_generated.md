@@ -1,4 +1,4 @@
-| n | construction bound | fresh-search attainment | best | witness (graph sha1) |
+| n | construction bound | fresh-search attainment | best known | witness (graph sha1) |
 |---|---|---|---|---|
 | 24 | 3 (ring m=3,k=1,t=8) | - | 3 | `2517130b` |
 | 25 | 5 (ring m=5,k=2,t=5) | 12 | 5 | `93072b44` |
