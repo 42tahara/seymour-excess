@@ -41,6 +41,13 @@ re-checked exactly in numpy before being reported.
 restricted, but treat it as untrusted code: run in a container or disposable
 environment.
 
+Known limitation: the per-candidate timeout uses SIGALRM, which cannot
+interrupt long-running native (numpy) operations — a generated candidate can
+hang the loop indefinitely. If that happens, kill the process; the lineage DB
+is saved atomically each generation, so re-running with the same `SEYMOUR_DB`
+resumes cleanly. A subprocess-based sandbox with a hard kill would fix this
+properly.
+
 ## What is deliberately not included
 
 Raw lineage databases (`evolve_db*.json`) and run logs are excluded from the
