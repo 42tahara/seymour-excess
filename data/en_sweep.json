@@ -49,7 +49,7 @@
    "best_excess": 9,
    "best_nsat": 6,
    "source": "champion_n47_a76a5072.json (graph_sha1 embedded)",
-   "note": "2026-07-22 survey: independent fresh lineage; verified (3 impl). Sibling fresh lineage stuck at 26, ring-approx seed lineage at 19."
+   "note": "2026-07-22 survey: independent fresh lineage; verified (3 impl). Sibling fresh lineage stuck at 26, ring-approx seed lineage at 19. Round-2 (search volume equalized to n=53, +2 fresh lineages): 32 and 13 \u2014 best stays 9. Pre-registered criterion: structure side."
   },
   {
    "n": 49,
@@ -81,7 +81,7 @@
    "best_excess": 7,
    "best_nsat": 6,
    "source": "champion_n59_24dc568c.json",
-   "note": "2026-07-22 survey: independent fresh lineage; verified (3 impl). Sibling fresh and ring lineages stuck at 35."
+   "note": "2026-07-22 survey: independent fresh lineage; verified (3 impl). Sibling fresh and ring lineages stuck at 35. Round-2 +2 fresh lineages: 35 and 22 \u2014 best stays 7. Pre-registered criterion: hold, one more lineage running."
   },
   {
    "n": 60,
@@ -106,5 +106,26 @@
   "delta10_best": 5,
   "generations": 40,
   "note": "2026-07-22: floor unmoved at delta>=9 and delta>=10 \u2014 the divisor-ring seed (out-degree 10) satisfies both constraints; 40 generations never improved on it. The excess floor is insensitive to the delta detail."
+ },
+ "fresh_only_controls": {
+  "purpose": "control group: fresh-only search values at composite n (divisor-ring seed h9 excluded from seeding) \u2014 measures search reachability, NOT the floor",
+  "date": "2026-07-22",
+  "points": [
+   {
+    "n": 48,
+    "best_excess": 13,
+    "generations": 40,
+    "witness_sha1_prefix": "c8fe3ef0",
+    "contrast": "constructive floor is 3 (T1 pure ring, 48=3*16) \u2014 fresh search missed it by 10: evolution alone badly underestimates composite floors"
+   },
+   {
+    "n": 50,
+    "best_excess": 20,
+    "generations": 40,
+    "witness_sha1_prefix": "c8f48aa4",
+    "contrast": "with the h9 seed the same n yields 5 \u2014 the seed, not the search, carried the composite floor"
+   }
+  ],
+  "reading": "controls sit ABOVE neighbouring primes (47:9, 49:6, 53:5) \u2014 the monotone small-n congestion explanation is rejected; per-lineage variance (47: 9/13/32, 59: 7/22/35) exceeds the staircase gaps"
  }
 }
