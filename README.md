@@ -67,11 +67,42 @@ experiments/     the full search pipeline (evolution, n-sweep, CP-SAT models)
                  for the evolutionary parts, executes model-generated code
 ```
 
-## In progress
+## Open problems & work in progress
 
-Fresh divisor-desert probes (n = 49/50/53), the GKZ 8.2 scan beyond n = 23,
-tournament-restricted excess ≤ 2 scans, and the δ = 8 local CP-SAT table are
-running; their results will be appended to `data/` and the tables above.
+Stated as of 2026-07-22. We record these questions deliberately: naming an
+open question, with a date, is part of what this repository claims.
+
+1. **Is E_{δ≥8}(n) ≥ 3 for every n ≥ 17?** We conjecture yes. Proven only
+   at n = 17 (T2); the CP-SAT search for excess ≤ 2 at n = 18..22 exhausts
+   its time budget undecided (`data/excess2_results.jsonl`). A
+   tournament-restricted variant (min out-degree ≥ 8 forces n ≥ 17) is
+   being scanned as an adversarial test of the same conjecture.
+2. **Does the floor equal the minimal legal skeleton size?** The equality
+   E_{δ≥8}(n) = min m in T1′ is a working hypothesis, supported by the
+   three-point coincidence at n = 50 (floor 5 = evolutionary optimum =
+   survivor ring length). Fresh evolutionary probes at n = 49/50/53 are
+   testing its predictions on the former deserts.
+3. **Do primes really resist?** T1′ leaves prime n as deserts (only the
+   trivial t = 1 witness, excess = n). Either a construction beating
+   excess = n at a prime, or a lower-bound argument separating primes,
+   would be significant.
+4. **δ = 8 local feasibility.** The δ = 7 local INFEASIBLE argument
+   (arXiv:2606.30588) does not extend directly: 12 of 340 rows of our
+   δ = 8 generalisation are locally consistent (all in the b = 7, k = 3
+   family). Resolution of the remaining UNKNOWN rows is running.
+5. **GKZ Conjecture 8.2 beyond the scan.** k = 3 verified for n ≤ 24
+   (scan continuing); k ≥ 4 and a structural proof for k = 3 remain open.
+
+Results are appended to `data/` and the tables above as they complete.
+
+## Collaboration statement
+
+This project is a human–AI collaboration. Direction, decisions, and
+judgment: Daiki Tahara. Mathematical supervision, verification, and
+literature work: Claude (Fable, Anthropic). Implementation, search, and
+computation: Claude (Code, Anthropic). All claims are machine-verified by
+independent implementations; the mathematics should be judged on the
+verifiability of the claims, not on the nature of the authors.
 
 ## Related work
 
