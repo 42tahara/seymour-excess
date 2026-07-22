@@ -36,7 +36,7 @@ checks together take seconds (`make verify-all`). Dependencies: `numpy` and
 |---|---|---|---|
 | T1 | E_{δ≥8}(n) ≤ min{m≥3 : m\|n, n/m≥8} (pure m-ring) | theorem (constructive) | `make verify-t1` |
 | T1′ | E_{δ≥8}(n) ≤ min{m≥3 : m\|n, ∃k≥1: 2k<m, k·(n/m)≥8} (C_m^k power ring; T1 is k=1). In particular E(25)≤5, E(35)≤5, E(49)≤7 | theorem candidate (arithmetic in `constructions/power_ring.py` docstring; numeric verification by 2 independent implementations) | `make verify-t1p` |
-| T2 | E_{δ≥8}(17) ≥ 3 | theorem (CP-SAT proof, 219 s) | `make verify-t2` (recorded log) / `make verify-t2-full` (re-prove, ~4 min) |
+| T2 | E_{δ≥8}(17) ≥ 3 | computer-assisted (CP-SAT infeasibility, 357 s; encoding + limitations in the note's Appendix A) | `make verify-t2` (recorded log) / `make verify-t2-full` (re-prove, ~6 min) |
 | T5 | The Pisa structure conjecture (arXiv:2601.21563, Conj 5.1) is false: explicit counterexamples at n = 8, 48, 50 and a minimal one at n = 7 | verified, 3 independent implementations | `make verify-t5` |
 | T6 | GKZ Conjecture 8.2 (arXiv:2603.29626) holds for k = 3 for all n ≤ 28 and n = 30 (n = 29 UNKNOWN at a 4-hour budget) | CP-SAT INFEASIBLE; non-vacuous (hypothesis graphs exist at every scanned n) | `make verify-t6` |
 | O1 | Evolved witnesses: E_{δ≥8}(50) ≤ 5 (`champion_28da4a1e`, survivors form a directed pentagon); earlier ≤ 8 (`champion_d74d6509`) | verified graphs (independent checker) | `make verify-o1` |
