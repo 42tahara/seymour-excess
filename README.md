@@ -151,7 +151,8 @@ verifiability of the claims, not on the nature of the authors.
 > Daiki Tahara, *Measuring the moat: excess bounds near Seymour's second
 > neighbourhood conjecture*, 2026.
 > With Claude (Anthropic) as AI collaborators.
-> DOI: [10.5281/zenodo.21497370](https://doi.org/10.5281/zenodo.21497370)
+> Preprint DOI: [10.5281/zenodo.21497889](https://doi.org/10.5281/zenodo.21497889)
+> --- Software/data DOI: [10.5281/zenodo.21497370](https://doi.org/10.5281/zenodo.21497370)
 
 ## License
 
