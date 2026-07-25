@@ -1043,9 +1043,14 @@ $73$ are feasible. The largest derived bound $B$ over all instances is $222$.
 Every feasible instance has excess exactly $3$ and $n \equiv 0 \pmod 3$, with
 profile three D0M classes and the rest NEG; no instance with excess $0$, $1$
 or $2$ is feasible for any $n$. Raising the budget to $4$ gives
-$1\,052\,936$ instances and $972$ feasible ones ($73$ with excess $3$, $899$
-with excess $4$), excess $4$ occurring in all three residues, and the smallest
-$n$ carrying excess $\le 4$ anywhere in the family is $24$.
+$1\,052\,936$ instances, $1\,051\,964$ of them empty over the rationals, none
+undecided, and $972$ feasible ($73$ with excess $3$, $899$ with excess $4$),
+with largest derived bound $B = 224$; excess $4$ occurs in all three residues,
+and the smallest $n$ carrying excess $\le 4$ anywhere in the family is $24$.
+Both runs are published as \texttt{data/blowup/blowup\_inverse\_results.jsonl}
+and \texttt{...\_e4.jsonl}: every figure quoted in this subsection is a field
+of the summary row of one of those two files, and the per-instance rows are
+included so that the residue pattern can be read off directly.
 
 Four bounded cross-checks accompany the computation
 (\texttt{make verify-t9}), each of which would fail loudly if the reduction
