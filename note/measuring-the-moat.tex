@@ -40,7 +40,8 @@ Seymour's second neighbourhood conjecture}
 \author{Daiki Tahara}
 \address{Independent researcher, Osaka, Japan}
 \thanks{Version 2.0 --- 2026-07-26. Supersedes version 1.1 (2026-07-23),
-which remains archived; no claim of that version became false.}
+which remains archived. All proved inequalities of that version remain
+valid; this version corrects notation, interpretation and provenance.}
 
 \begin{document}
 
@@ -59,7 +60,8 @@ degenerate family: $E_{\ge k}(2k+1) = 2k+1$ for all $k \ge 1$, by an
 elementary argument that replaces a solver computation. Inside one explicitly
 defined class of capped-tournament blow-ups we prove a partial lower bound,
 $\exc \ge 3$ with equality forcing $3 \mid n$; we emphasise that this says
-nothing outside that class. No lower bound is known at any $n \ge 18$. We also
+nothing outside that class. No lower bound beyond the trivial $\exc \ge 0$
+is known at any $n \ge 18$. We also
 record, as a methodological result, that search attainment overstated the
 best available upper bound in every discrepancy, and that in each case an
 explicit construction, not a further search, settled it.
@@ -109,7 +111,7 @@ interesting quantity carries the degree bound that counterexamples must
 satisfy. \emph{Two} minima are used here and they must not be conflated:
 \begin{align*}
 E_{\ge d}(n) &= \min\{\exc(G) : |V(G)| = n,\ G \text{ oriented},\
-   \delta^+(G) \ge \delta\},\\
+   \delta^+(G) \ge d\},\\
 \Esc_{\ge d}(n) &= \text{the same minimum over the strongly connected such } G.
 \end{align*}
 Since the second minimises over a subclass, $E_{\ge d}(n) \le \Esc_{\ge d}(n)$.
@@ -427,7 +429,10 @@ $N^-(v) \subseteq N_2^+(v)$ and $d_2(v) \ge k$. Conversely
 $N_2^+(v) \subseteq V \setminus (N_1^+(v) \cup \{v\})$ gives
 $d_2(v) \le n - 1 - k = k$. So $m(v) = 0$ at every vertex and $\exc(G) = n$.
 Finally $N_2^+(v) = N^-(v)$ puts every vertex within distance two of every
-other, so all these graphs are strongly connected and the two minima agree.
+other, so all these graphs are strongly connected and the two minima agree. The class
+is non-empty for every $k$ --- the circulant tournament on $\mathbb{Z}_{2k+1}$
+with connection set $\{1, \dots, k\}$ is regular of out-degree $k$ --- so the
+minima are attained and the equalities hold rather than being vacuous.
 \end{proof}
 
 Proposition~\ref{prop:odd} is not new: it is the classical fact that a vertex
@@ -454,7 +459,8 @@ else.
 
 \subsection{What is known on the lower side}
 
-Nothing, at any $n \ge 18$. Specifically: for $18 \le n \le 23$ there is no
+Nothing beyond the trivial $E_{\ge 8}(n) \ge 0$: no positive lower bound is
+known at any $n \ge 18$. For $18 \le n \le 23$ there is no
 construction, no lower bound, and no working search instrument (the density
 forced by $\delta^+ \ge 8$ leaves almost no legal local moves). For
 $n \ge 24$, $3 + [3\nmid n]$ is an upper bound only, and whether it is exact
@@ -596,7 +602,7 @@ upper bound in every discrepancy we recorded, and in each one an explicit
 construction --- never a further search --- settled the comparison. The two
 failures below differ in kind, not in direction.
 
-\emph{Too high.} A pre-registered control --- fresh search on the composites
+\emph{Failure by non-attainment.} A pre-registered control --- fresh search on the composites
 $n = 48, 50$ with all construction seeds withheld --- returned $13$ and $20$
 against construction values $3$ and $5$ at the same orders. The seed, not the
 search, had been carrying the composite values. Above the surveyed band the
@@ -608,7 +614,7 @@ largest shortfall being $+2$. Those witnesses are published with this note
 \texttt{make verify-m1-high}; none of them falls \emph{below} the
 construction value.
 
-\emph{Too low.} At the primes $n = 59$ and $n = 61$ an earlier search settled
+\emph{Failure by false pattern inference.} At the primes $n = 59$ and $n = 61$ an earlier search settled
 on excess $7$, and this was read as a ``floor $=$ ring length $+ 1$'' pattern
 at primes. It was a basin artefact; the pre-registered hypothesis is now
 rejected, the construction gives $4$ at both orders, and witnesses of excess
@@ -899,7 +905,8 @@ for every cap, and the cap vector need not be enumerated.
 \end{lemma}
 
 \begin{proof}
-Increasing $c_a$ by one replaces one contribution $\max(0,\Delta_a - c_a + 1)$
+Increasing $c_a$ by one replaces each contribution $\max(0,\Delta_a - c_a + 1)$
+at a position $j \ge c_a$
 by $\max(0, \Delta_a - c_a)$, which is not larger; so $X(a)$ is non-increasing
 in $c_a$ and saturates once $c_a \ge \Delta_a + 1$, where every further
 position contributes $0$. Evaluating at saturation gives the displayed sum
@@ -938,8 +945,8 @@ Note that the unit of enumeration is the pair
 $(\Delta_a, \min(n_a, \Delta_a+1))$ and not $\Delta_a$ alone: the degree
 condition binds $S_1(a) = \sum_{b \in A(a)} n_b$, not $n_a$, so single-vertex
 classes are admissible and do occur. Enumerating $\Delta$ alone would miss
-them, and the smallest excess-3 member found on four classes indeed has sizes
-$[8,1,7,8]$.
+them, and $166$ of the feasible instances at budget $4$ do place a class in the
+regime D1S1, which exists only at $n_a = 1$.
 
 \subsection*{B.3 The linear model}
 
@@ -995,8 +1002,11 @@ $P$ is empty over the rationals and a fortiori over the integers.
 Fix a quotient $H$ and a regime assignment of total cost at most $E$. Deciding,
 for each residue $\rho \in \{0,1,2\}$, whether $P$ contains an integer point
 with $\mathbf{1}^{\!\top}s \le B$ and $\mathbf{1}^{\!\top}s \equiv \rho$
-decides, for that instance, whether a member of $\mathcal{F}$ with excess at
-most $E$ and $n \equiv \rho \pmod 3$ exists \emph{at any $n$ whatsoever}.
+decides, for that instance, whether a member of $\mathcal{F}$ \emph{realising
+that regime assignment}, with excess at most $E$ and $n \equiv \rho \pmod 3$,
+exists \emph{at any $n$ whatsoever}. Ranging over all quotients and all regime
+assignments of cost at most $E$ therefore decides the question for
+$\mathcal{F}$.
 \end{lemma}
 
 \begin{proof}
@@ -1049,15 +1059,18 @@ with largest derived bound $B = 224$; excess $4$ occurs in all three residues,
 and the smallest $n$ carrying excess $\le 4$ anywhere in the family is $24$.
 Both runs are published as \texttt{data/blowup/blowup\_inverse\_results.jsonl}
 and \texttt{...\_e4.jsonl}: every figure quoted in this subsection is a field
-of the summary row of one of those two files, and the per-instance rows are
-included so that the residue pattern can be read off directly.
+of the summary row of one of those two files, except for the four
+cross-checks of the next paragraph, whose figures come from the output of
+\texttt{make verify-t9}; the per-instance rows are included so that the
+residue pattern can be read off directly.
 
 Four bounded cross-checks accompany the computation
 (\texttt{make verify-t9}), each of which would fail loudly if the reduction
 above were wrong: the $73$ feasible size vectors are expanded into explicit
 graphs and re-scored ($73/73$ agree); $2\,321\,385$ blow-ups at small orders
 are evaluated exhaustively, finding no excess $\le 3$ with $3 \nmid n$; all
-$357$ irreducible elements of the recession cones are checked to have
+$357$ irreducible elements of the recession cones found within the search
+box $[0,10]$ are checked to have
 coordinate sum $\equiv 0 \pmod 3$; and all $146$ base models at residues $1$
 and $2$ are confirmed infeasible.
 
