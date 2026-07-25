@@ -1,0 +1,32 @@
+{
+  "witness_file": "champion_28da4a1e.json",
+  "graph_sha1": "17cd7dc814daf872bab854419ace0c0bc0f5881b",
+  "tight_scc_source": "slack_n50_17cd7dc8.json tight_nontrivial_sccs[0]",
+  "base_excess": 5,
+  "bands": {
+    "tight_scc_internal": {
+      "arcs": 87,
+      "del_neutral": 11,
+      "rev_neutral": 0,
+      "rev_possible": 87,
+      "del_neutral_rate": 0.1264,
+      "rev_neutral_rate": 0.0
+    },
+    "low_other": {
+      "arcs": 375,
+      "del_neutral": 46,
+      "rev_neutral": 0,
+      "rev_possible": 375,
+      "del_neutral_rate": 0.1227,
+      "rev_neutral_rate": 0.0
+    },
+    "high": {
+      "arcs": 177,
+      "del_neutral": 54,
+      "rev_neutral": 28,
+      "rev_possible": 177,
+      "del_neutral_rate": 0.3051,
+      "rev_neutral_rate": 0.1582
+    }
+  }
+}

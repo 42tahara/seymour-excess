@@ -1,0 +1,94 @@
+[
+  {
+    "n": 17,
+    "base": {
+      "n": 17,
+      "delta": 8,
+      "add_arc_ineq": false,
+      "status": "OPTIMAL",
+      "lp_obj": 0.0,
+      "wall_seconds": 0.09853219985961914,
+      "num_vars": 578,
+      "num_constraints": 4539
+    },
+    "arc_ineq": {
+      "n": 17,
+      "delta": 8,
+      "add_arc_ineq": true,
+      "status": "OPTIMAL",
+      "lp_obj": 0.0,
+      "wall_seconds": 0.8255109786987305,
+      "num_vars": 4658,
+      "num_constraints": 17051
+    }
+  },
+  {
+    "n": 18,
+    "base": {
+      "n": 18,
+      "delta": 8,
+      "add_arc_ineq": false,
+      "status": "OPTIMAL",
+      "lp_obj": 0.0,
+      "wall_seconds": 0.14092206954956055,
+      "num_vars": 648,
+      "num_constraints": 5409
+    },
+    "arc_ineq": {
+      "n": 18,
+      "delta": 8,
+      "add_arc_ineq": true,
+      "status": "OPTIMAL",
+      "lp_obj": 0.0,
+      "wall_seconds": 1.2247140407562256,
+      "num_vars": 5544,
+      "num_constraints": 20403
+    }
+  },
+  {
+    "n": 19,
+    "base": {
+      "n": 19,
+      "delta": 8,
+      "add_arc_ineq": false,
+      "status": "OPTIMAL",
+      "lp_obj": 0.0,
+      "wall_seconds": 0.1784501075744629,
+      "num_vars": 722,
+      "num_constraints": 6384
+    },
+    "arc_ineq": {
+      "n": 19,
+      "delta": 8,
+      "add_arc_ineq": true,
+      "status": "OPTIMAL",
+      "lp_obj": 0.0,
+      "wall_seconds": 1.5393290519714355,
+      "num_vars": 6536,
+      "num_constraints": 24168
+    }
+  },
+  {
+    "n": 20,
+    "base": {
+      "n": 20,
+      "delta": 8,
+      "add_arc_ineq": false,
+      "status": "OPTIMAL",
+      "lp_obj": 0.0,
+      "wall_seconds": 0.25830698013305664,
+      "num_vars": 800,
+      "num_constraints": 7470
+    },
+    "arc_ineq": {
+      "n": 20,
+      "delta": 8,
+      "add_arc_ineq": true,
+      "status": "OPTIMAL",
+      "lp_obj": 0.0,
+      "wall_seconds": 2.051831007003784,
+      "num_vars": 7640,
+      "num_constraints": 28370
+    }
+  }
+]

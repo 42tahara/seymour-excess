@@ -1,0 +1,131 @@
+{
+  "witness_label": "n50_c8f48aa4",
+  "witness_sha1": "a791d452b70d65356aaf72ce49e0ff1fdccd9ef8",
+  "N": 50,
+  "graph_sha1": "c15937127685a88a182a29cc63fdb0e3aaed2a23",
+  "num_arcs": 1146,
+  "excess_sum_max0_dp1": 20,
+  "min_out_degree": 15,
+  "alpha_histogram": [
+    {
+      "alpha": 0,
+      "count": 80
+    },
+    {
+      "alpha": 1,
+      "count": 40
+    },
+    {
+      "alpha": 2,
+      "count": 30
+    },
+    {
+      "alpha": 3,
+      "count": 32
+    },
+    {
+      "alpha": 4,
+      "count": 34
+    },
+    {
+      "alpha": 5,
+      "count": 26
+    },
+    {
+      "alpha": 6,
+      "count": 56
+    },
+    {
+      "alpha": 7,
+      "count": 182
+    },
+    {
+      "alpha": 8,
+      "count": 148
+    },
+    {
+      "alpha": 9,
+      "count": 101
+    },
+    {
+      "alpha": 10,
+      "count": 46
+    },
+    {
+      "alpha": 11,
+      "count": 15
+    },
+    {
+      "alpha": 12,
+      "count": 4
+    },
+    {
+      "alpha": 13,
+      "count": 1
+    },
+    {
+      "alpha": 14,
+      "count": 4
+    },
+    {
+      "alpha": 15,
+      "count": 24
+    },
+    {
+      "alpha": 16,
+      "count": 24
+    },
+    {
+      "alpha": 17,
+      "count": 21
+    },
+    {
+      "alpha": 18,
+      "count": 67
+    },
+    {
+      "alpha": 19,
+      "count": 58
+    },
+    {
+      "alpha": 20,
+      "count": 64
+    },
+    {
+      "alpha": 21,
+      "count": 65
+    },
+    {
+      "alpha": 22,
+      "count": 19
+    },
+    {
+      "alpha": 23,
+      "count": 5
+    }
+  ],
+  "alpha_stats": {
+    "min": 0,
+    "max": 23,
+    "mean": 10.029668411867364
+  },
+  "tight_arc_count": 80,
+  "tight_vertices_count": 19,
+  "tight_nontrivial_sccs": [],
+  "tight_scc_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "deep_deficit_vertices_m_le_-10": [],
+  "keystones_m_ge_5": [],
+  "deep_reports": [],
+  "note_tight_subgraph": "A directed cycle in the tight subgraph is a certificate: sum m + sum o = 0 exactly on that cycle."
+}

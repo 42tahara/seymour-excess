@@ -1,0 +1,106 @@
+{
+  "witness_label": "n59_c44e402b",
+  "witness_sha1": "1a018e80ebe716438fca316bfff0f68ab8adf5e1",
+  "N": 59,
+  "graph_sha1": "c44e402b0688bdcfd94aef7037d89fc96c9f1a09",
+  "num_arcs": 738,
+  "excess_sum_max0_dp1": 7,
+  "min_out_degree": 9,
+  "alpha_histogram": [
+    {
+      "alpha": 0,
+      "count": 152
+    },
+    {
+      "alpha": 1,
+      "count": 210
+    },
+    {
+      "alpha": 2,
+      "count": 112
+    },
+    {
+      "alpha": 3,
+      "count": 56
+    },
+    {
+      "alpha": 4,
+      "count": 24
+    },
+    {
+      "alpha": 5,
+      "count": 5
+    },
+    {
+      "alpha": 6,
+      "count": 1
+    },
+    {
+      "alpha": 9,
+      "count": 13
+    },
+    {
+      "alpha": 10,
+      "count": 89
+    },
+    {
+      "alpha": 11,
+      "count": 59
+    },
+    {
+      "alpha": 12,
+      "count": 16
+    },
+    {
+      "alpha": 13,
+      "count": 1
+    }
+  ],
+  "alpha_stats": {
+    "min": 0,
+    "max": 13,
+    "mean": 3.5094850948509486
+  },
+  "tight_arc_count": 152,
+  "tight_vertices_count": 47,
+  "tight_nontrivial_sccs": [
+    [
+      4,
+      5,
+      6,
+      9,
+      11,
+      13,
+      14,
+      15,
+      20,
+      21,
+      23,
+      27,
+      34,
+      35,
+      40,
+      42,
+      44,
+      48,
+      49,
+      51
+    ]
+  ],
+  "tight_scc_sizes": [
+    20,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "deep_deficit_vertices_m_le_-10": [],
+  "keystones_m_ge_5": [],
+  "deep_reports": [],
+  "note_tight_subgraph": "A directed cycle in the tight subgraph is a certificate: sum m + sum o = 0 exactly on that cycle."
+}

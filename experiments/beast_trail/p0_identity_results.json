@@ -1,0 +1,116 @@
+[
+  {
+    "label": "n50_17cd7dc8",
+    "N": 50,
+    "graph_sha1": "17cd7dc814daf872bab854419ace0c0bc0f5881b",
+    "num_tight_arcs": 100,
+    "num_nontriv_sccs": 1,
+    "nontriv_scc_sizes": [
+      21
+    ],
+    "sccs": [
+      {
+        "size": 21,
+        "arcs_inside": 87,
+        "unit_sum_m_scc": -28,
+        "unit_sum_o_scc": 115,
+        "unit_identity_value": 87,
+        "weighted_sum_m": -114,
+        "weighted_sum_d1_imbalance": -1,
+        "weighted_sum_o": 115,
+        "weighted_identity_value": 0,
+        "is_eulerian_on_tight_subgraph": false,
+        "d_plus_distribution": [
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            10
+          ],
+          [
+            5,
+            7
+          ]
+        ],
+        "d_minus_distribution": [
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            8
+          ],
+          [
+            5,
+            8
+          ]
+        ]
+      }
+    ],
+    "overall_tight_arcs": {
+      "unit_identity_value": 83,
+      "weighted_identity_value": 0,
+      "V_tight_size": 50
+    }
+  },
+  {
+    "label": "n53_ca40b396",
+    "N": 53,
+    "graph_sha1": "dc922e89834d2057d0aba61cb395a16258c80953",
+    "num_tight_arcs": 568,
+    "num_nontriv_sccs": 1,
+    "nontriv_scc_sizes": [
+      32
+    ],
+    "sccs": [
+      {
+        "size": 32,
+        "arcs_inside": 335,
+        "unit_sum_m_scc": -163,
+        "unit_sum_o_scc": 1641,
+        "unit_identity_value": 1478,
+        "weighted_sum_m": -1611,
+        "weighted_sum_d1_imbalance": -30,
+        "weighted_sum_o": 1641,
+        "weighted_identity_value": 0,
+        "is_eulerian_on_tight_subgraph": false,
+        "d_plus_distribution": [
+          [
+            8,
+            11
+          ],
+          [
+            11,
+            13
+          ],
+          [
+            13,
+            8
+          ]
+        ],
+        "d_minus_distribution": [
+          [
+            8,
+            13
+          ],
+          [
+            11,
+            8
+          ],
+          [
+            13,
+            11
+          ]
+        ]
+      }
+    ],
+    "overall_tight_arcs": {
+      "unit_identity_value": 2585,
+      "weighted_identity_value": 0,
+      "V_tight_size": 53
+    }
+  }
+]

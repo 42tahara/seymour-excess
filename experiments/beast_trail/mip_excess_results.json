@@ -1,0 +1,54 @@
+[
+  {
+    "n": 17,
+    "mip": {
+      "n": 17,
+      "delta": 8,
+      "add_arc_ineq": false,
+      "status": "FEASIBLE",
+      "mip_obj": 17.0,
+      "wall_seconds": 120.01108288764954,
+      "num_vars": 578,
+      "num_constraints": 4539
+    }
+  },
+  {
+    "n": 18,
+    "mip": {
+      "n": 18,
+      "delta": 8,
+      "add_arc_ineq": false,
+      "status": "FEASIBLE",
+      "mip_obj": 17.0,
+      "wall_seconds": 120.00454306602478,
+      "num_vars": 648,
+      "num_constraints": 5409
+    }
+  },
+  {
+    "n": 19,
+    "mip": {
+      "n": 19,
+      "delta": 8,
+      "add_arc_ineq": false,
+      "status": "FEASIBLE",
+      "mip_obj": 25.0,
+      "wall_seconds": 120.00836515426636,
+      "num_vars": 722,
+      "num_constraints": 6384
+    }
+  },
+  {
+    "n": 20,
+    "mip": {
+      "n": 20,
+      "delta": 8,
+      "add_arc_ineq": false,
+      "status": "FEASIBLE",
+      "mip_obj": 19.0,
+      "wall_seconds": 120.00486302375793,
+      "num_vars": 800,
+      "num_constraints": 7470
+    }
+  }
+]
