@@ -51,7 +51,7 @@ graph has a vertex whose second out-neighbourhood is at least as large as its
 first. For an oriented graph $G$ define
 $\exc(G) = \sum_v \max(0,\, d_2(v) - d_1(v) + 1)$; then $\exc(G) = 0$ iff $G$
 is a counterexample. Let $E_{\ge d}(n)$ be the minimum excess over $n$-vertex
-oriented graphs of minimum out-degree at least $\delta$, and $\Esc_{\ge d}(n)$
+oriented graphs of minimum out-degree at least $d$, and $\Esc_{\ge d}(n)$
 the same minimum over the strongly connected ones. We prove
 $E_{\ge 8}(n) \le \Esc_{\ge 8}(n) \le 3 + [3 \nmid n]$ for every
 $n \ge 24$, by exhibiting one explicit family; this subsumes every upper bound
@@ -155,10 +155,10 @@ is the record of what happens when the three are mixed.
   capped-tournament blow-ups, $\exc \ge 3$, with equality forcing
   $3 \mid n$. This is \emph{not} a lower bound on $E_{\ge 8}$.
 \item \textbf{Measurements and a measurement-theoretic caveat}
-  (\S\ref{sec:measurements}): search attainment was wrong in both
-  directions, and construction alone adjudicated each time.
+  (\S\ref{sec:measurements}): search attainment failed in two distinct ways,
+  and construction alone adjudicated each time.
 \item \textbf{Open problems} (\S\ref{sec:open}), foremost: is
-  $3 + [3 \nmid n]$ exact? Nothing is known on the lower side at any
+  $3 + [3 \nmid n]$ exact? No positive lower bound is known at any
   $n \ge 18$.
 \end{enumerate}
 
