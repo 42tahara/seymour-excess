@@ -161,11 +161,14 @@ DATA = os.path.join(ROOT, 'data', 'blowup')
 SONAR_BEST = os.path.join(ROOT, 'data', 'sonar_best')
 RESULTS = os.path.join(DATA, 'blowup_sweep_results.jsonl')
 DELTA = 8
-# data/sonar_best/ ships the per-n best measured witness for n = 24..100, so the
-# subset that calibration 2 can use (3 | n, excess 3) has 26 members: n = 24,
-# 27, ..., 99.  The guard below only exists so that an empty glob cannot pass
-# silently; raise it if more witnesses are ever shipped.
-SHA1_MIN_HITS = 26
+# Calibration 2 compares the stored 3 | n witnesses against the C_3 construction.
+# The guard below exists so that an empty or shrunken glob cannot pass silently.
+# It is DERIVED from what is actually shipped, never hard-coded: a hard-coded
+# floor has to be raised by hand whenever the witness set grows, and the one
+# thing a guard must not do is quietly stop guarding.  Every stored witness with
+# 3 | n and n >= 24 must be reached by the loop; one whose excess is not 3 would
+# be skipped, and that is a failure too, since the family attains excess 3 at
+# every such order.  See verify_sha1() for what this does and does not catch.
 
 
 # ------------------------------------------------------------ quotient basics
@@ -577,11 +580,17 @@ def verify_family(lo=24, hi=150, quiet=False):
 
 def verify_sha1(quiet=False):
     """2. graph_sha1 of C_3[n/3,n/3,n/3; 1,1,1] vs the stored 3|n witnesses."""
-    hits = bad = 0
+    hits = bad = expected = 0
     for path in sorted(glob.glob(os.path.join(SONAR_BEST, '*.json'))):
         d = json.load(open(path))
         n = int(d['N'])
-        if n % 3 or n < 24 or d['score'][2] != 3:
+        if n % 3 or n < 24:
+            continue
+        expected += 1          # every such witness must be reached below
+        if d['score'][2] != 3:
+            bad += 1
+            print(f'  {os.path.basename(path)}: 3|n witness has excess '
+                  f'{d["score"][2]}, expected 3')
             continue
         sizes = [n // 3] * 3
         sha = graph_sha1(build(C3, sizes, [1, 1, 1]))[1]
@@ -593,6 +602,16 @@ def verify_sha1(quiet=False):
         elif excess_closed(C3, sizes, [1, 1, 1]) != d['score'][2]:
             bad += 1
             print(f'  {os.path.basename(path)}: closed-form excess mismatch')
+    # This guard catches an EMPTY glob only -- both counts are derived from the
+    # files present, so deleting a witness lowers both and passes here.  That is
+    # deliberate: deletion is caught by verify-hashes (the manifest lists the
+    # file) and by verify-m1 (which reports the order as missing), both of which
+    # were checked to exit non-zero on a removed witness.  Duplicating it here
+    # would need a hard-coded count, which is the thing being avoided.
+    if hits != expected or expected == 0:
+        bad += 1
+        print(f'  guard: reached {hits} of {expected} stored 3|n witnesses '
+              f'(n >= 24); the glob is empty')
     if not quiet:
         print(f'2. stored 3|n witnesses (data/sonar_best/): {hits - bad}/{hits} '
               f'graph_sha1 identical to the quotient construction')
@@ -780,8 +799,8 @@ def main():
     if a.verify or a.verify_family:
         bad += verify_family(24, 150)
     if a.verify or a.verify_sha1:
-        b, hits = verify_sha1()
-        bad += b + (0 if hits >= SHA1_MIN_HITS else 1)
+        b, _hits = verify_sha1()   # the empty-glob guard is inside verify_sha1
+        bad += b
     if a.verify or a.verify_random:
         bad += verify_random(a.trials, a.seed)
     if a.verify or a.verify_family or a.verify_sha1 or a.verify_random:

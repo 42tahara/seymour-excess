@@ -39,13 +39,26 @@ def legacy_sha1(obj):
         json.dumps(adj, sort_keys=True).encode()).hexdigest()
 
 
+# Witness graphs live in data/ itself and in these subdirectories.  The list is
+# explicit (fail-closed) rather than a recursive walk: data/ also holds solver
+# logs and sweep records, and a rule that guessed which files are graphs would
+# silently skip a corrupt witness instead of failing on it.
+WITNESS_DIRS = ("", "sonar_best")
+
+# .json files under those directories that are records, not witness graphs.
+NON_GRAPH = ("en_sweep.json", "pisa_results.json",
+             "t2_reprove_dist2core.json")
+
+
 def graph_files():
-    for f in sorted(os.listdir(DATA)):
-        if f.endswith(".json") and f != "manifest.json" \
-                and f not in ("en_sweep.json", "pisa_results.json",
-                              # non-graph solver run records
-                              "t2_reprove_dist2core.json"):
-            yield f
+    for sub in WITNESS_DIRS:
+        d = os.path.join(DATA, sub) if sub else DATA
+        if not os.path.isdir(d):
+            continue
+        for f in sorted(os.listdir(d)):
+            if f.endswith(".json") and f != "manifest.json" \
+                    and f not in NON_GRAPH:
+                yield os.path.join(sub, f) if sub else f
 
 
 def main():
@@ -58,7 +71,16 @@ def main():
         return
     manifest = json.load(open(path))
     bad = []
+    missing = [f for f in sorted(manifest)
+               if not os.path.exists(os.path.join(DATA, f))]
+    if missing:
+        # Diagnose rather than crash: a fresh clone with a dropped witness
+        # should say which file is gone, not raise FileNotFoundError.
+        for f in missing:
+            print(f"MISSING  {f}  (listed in manifest.json, not on disk)")
     for f, want in sorted(manifest.items()):
+        if f in missing:
+            continue
         obj = json.load(open(os.path.join(DATA, f)))
         got = canonical_sha1(obj)
         # champion files carry a code-lineage id in 'sha1' (see 'sha1_kind');
@@ -77,6 +99,7 @@ def main():
     if extra:
         print(f"WARNING: unmanifested graph files: {extra}")
         bad += extra
+    bad += missing
     if bad:
         sys.exit(f"FAIL: {bad}")
     print(f"PASS: {len(manifest)} graphs match manifest")
