@@ -64,3 +64,6 @@ verify-d2core-t2:      ## lib/dist2core: re-prove E(17) >= 3 from a rebuilt mode
 verify-blowup-calib:   ## blowup/: closed form vs family, stored witnesses, random cases
 	$(PY) blowup/blowup_sweep.py --verify
 	$(PY) blowup/blowup_inverse.py --test
+
+verify-note-fresh:     ## the shipped note PDF was built from the shipped source
+	$(PY) verify/check_note_fresh.py
