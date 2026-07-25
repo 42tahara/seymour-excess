@@ -42,7 +42,9 @@ def legacy_sha1(obj):
 def graph_files():
     for f in sorted(os.listdir(DATA)):
         if f.endswith(".json") and f != "manifest.json" \
-                and f not in ("en_sweep.json", "pisa_results.json"):
+                and f not in ("en_sweep.json", "pisa_results.json",
+                              # non-graph solver run records
+                              "t2_reprove_dist2core.json"):
             yield f
 
 

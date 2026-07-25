@@ -1,0 +1,10 @@
+{
+  "n": 17,
+  "cap": 2,
+  "status": "INFEASIBLE",
+  "wall_time_seconds": 755.6,
+  "ortools_version": "9.15.6755",
+  "random_seed": 1,
+  "num_search_workers": 8,
+  "model": "lib.dist2core.build_base_model + add_seymour_excess"
+}
