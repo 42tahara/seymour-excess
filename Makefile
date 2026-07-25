@@ -10,6 +10,7 @@ verify-all:            ## all fast checks (seconds; t2/t6 use recorded logs)
 	$(PY) constructions/upper_bound_family.py --verify
 	$(PY) verify/check_t8.py
 	$(PY) verify/check_m1_high.py
+	$(PY) verify/check_band.py
 	$(PY) verify/check_m1.py
 
 verify-hashes:         ## data/ graphs match manifest.json
@@ -67,3 +68,6 @@ verify-blowup-calib:   ## blowup/: closed form vs family, stored witnesses, rand
 
 verify-note-fresh:     ## the shipped note PDF was built from the shipped source
 	$(PY) verify/check_note_fresh.py
+
+verify-band:           ## upper bounds at 20..23, where the family G_n does not reach
+	$(PY) verify/check_band.py

@@ -23,7 +23,7 @@ import sys
 import tempfile
 
 SRC = 'note/measuring-the-moat.tex'
-PDF = 'note/measuring-the-moat-v2.0.pdf'
+PDF = 'note/measuring-the-moat-v2.1.pdf'
 DEPS = ('note/refs.bib', 'note/table_generated.tex')
 
 

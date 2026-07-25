@@ -7,7 +7,7 @@
 > [What changed since v0.1.0](#what-changed-since-v010).
 
 **The note is the authoritative statement of what this repository asserts**
-— `note/measuring-the-moat-v2.0.pdf`. This README is a map of it with the
+— `note/measuring-the-moat-v2.1.pdf`. This README is a map of it with the
 reproduction commands attached. Where the two disagree, the note is right and
 this file is a bug. (Version 1.1 of the note left this the other way round by
 accident; see `note/README.md`.)
@@ -164,9 +164,13 @@ Short, because there is little to say:
   the value rather than lowering it — at n = 5, k = 2 there is a digon-free
   graph with δ⁺ = 1 and excess 3, not 5. `E(17) = 17` is not evidence for a
   lower bound anywhere else.
-- **18 ≤ n ≤ 23: no positive lower bound.** No construction (`G_n` needs n ≥ 24), no lower
-  bound, and no working search instrument — the density forced by δ⁺ ≥ 8
-  leaves almost no legal local moves.
+- **18 ≤ n ≤ 23: no positive lower bound**, but not without upper bounds.
+  `G_n` needs n ≥ 24, yet the blow-up family F reaches into the band: it has
+  no member at n = 18 or 19, and its minima at the next four orders give
+  `E_{≥8}(20) ≤ 5`, `E_{≥8}(21) ≤ 6`, `E_{≥8}(22) ≤ 6`, `E_{≥8}(23) ≤ 6`
+  (witnesses in `data/band/`, `make verify-band`). What is missing here is a
+  lower bound and a working search instrument — the density forced by
+  δ⁺ ≥ 8 leaves almost no legal local moves.
 - **n ≥ 24: no positive lower bound.** `3 + [3∤n]` is an upper bound only; whether it is exact
   is open. The direct CP-SAT model does not reach the orders that matter:
   `exc ≤ 3` is INFEASIBLE at n = 17 in 1,356 s and UNKNOWN at n = 19 and
@@ -274,8 +278,9 @@ this repository claims.
    only the class-limited T9, and the fact that a broad sweep never went below
    the construction. The case "≥ 2 for all n" is the restriction to this class
    of a conjecture of Dara, Francis, Jacob and Narayanan (DAM 2022).
-2. **The band 18 ≤ n ≤ 23.** No construction, no lower bound, no working
-   search instrument. The smallest genuinely unexplored gap.
+2. **The band 18 ≤ n ≤ 23.** Upper bounds 5, 6, 6, 6 are now known at
+   n = 20..23 and the blow-up family is empty below 20, but there is no lower
+   bound anywhere in the band and no search instrument that functions in it.
 3. **Beyond the blow-up class.** T9 closes `exc ≤ 2` inside F. What happens
    for quotients on m ≥ 7 vertices, and for constructions that are not
    blow-ups at all?

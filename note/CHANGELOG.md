@@ -1,5 +1,12 @@
 # Changelog — Measuring the moat
 
+## v2.1 (2026-07-26)
+Correction to section 3.2. v2.0 said the band `18 ≤ n ≤ 23` had no
+construction; that holds for the family `G_n` but not for the blow-up family
+`F`, whose smallest member has `n = 20`. Adds the upper bounds
+`E_{≥8}(20) ≤ 5` and `E_{≥8}(n) ≤ 6` for `n = 21, 22, 23`, with published
+witnesses, and records that `F` is empty at `n = 18, 19`. No other change.
+
 ## v2.0 (2026-07-26)
 Integrated revision. **No claim of v1.1 became false**: every published value
 was an upper bound, and upper bounds do not become false when they improve.

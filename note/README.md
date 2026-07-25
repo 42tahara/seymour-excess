@@ -5,7 +5,7 @@ The citable note accompanying this repository.
 | file | what it is |
 |---|---|
 | `measuring-the-moat.tex` + `refs.bib` | **source of the current version (2.0)** |
-| `measuring-the-moat-v2.0.pdf` | current version |
+| `measuring-the-moat-v2.1.pdf` | current version |
 | `measuring-the-moat-v1.1.pdf` | version 1.1 (2026-07-23), archived under its own DOI |
 | `note_draft_v1.tex`, `note_draft_v1.md`, `note_draft_v1.pdf` | the v1 line, frozen; not edited by v2 |
 | `AUDIT_v1.md` | fact audit of v1 against the data ledger |

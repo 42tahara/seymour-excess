@@ -1,4 +1,4 @@
-% measuring-the-moat.tex --- version 2.0 (2026-07-26).
+% measuring-the-moat.tex --- version 2.1 (2026-07-26).
 %
 % Version 1.1 (2026-07-23) is frozen as
 % note_draft_v1.tex and is not edited by this file.  What changed:
@@ -39,7 +39,7 @@ Seymour's second neighbourhood conjecture}
 
 \author{Daiki Tahara}
 \address{Independent researcher, Osaka, Japan}
-\thanks{Version 2.0 --- 2026-07-26. Supersedes version 1.1 (2026-07-23),
+\thanks{Version 2.1 --- 2026-07-26. Supersedes version 1.1 (2026-07-23),
 which remains archived. All proved inequalities of that version remain
 valid; this version corrects notation, interpretation and provenance.}
 
@@ -460,9 +460,21 @@ else.
 \subsection{What is known on the lower side}
 
 Nothing beyond the trivial $E_{\ge 8}(n) \ge 0$: no positive lower bound is
-known at any $n \ge 18$. For $18 \le n \le 23$ there is no
-construction, no lower bound, and no working search instrument (the density
-forced by $\delta^+ \ge 8$ leaves almost no legal local moves). For
+known at any $n \ge 18$. The band $18 \le n \le 23$, which the family $G_n$
+does not reach, is not however without upper bounds. The blow-up family
+$\mathcal{F}$ of \S\ref{sec:class} has no member at $n = 18$ or $n = 19$, but
+its minima at the next four orders are
+\[
+E_{\ge 8}(20) \le 5, \quad E_{\ge 8}(21) \le 6, \quad
+E_{\ge 8}(22) \le 6, \quad E_{\ge 8}(23) \le 6,
+\]
+witnessed by blow-ups of the $5$-vertex circulant tournament $C_5(1,2)$ with
+class sizes $(4,4,4,4,4)$, $(3,5,4,4,5)$, $(4,4,5,4,5)$ and $(4,5,4,5,5)$;
+the four graphs are published and re-scored by \texttt{make verify-band}, and
+\texttt{--full} re-derives that these are the minima over $\mathcal{F}$ and
+that $n = 18, 19$ admit no member. What is missing in the band is a lower
+bound and a working search instrument --- the density forced by
+$\delta^+ \ge 8$ leaves almost no legal local moves. For
 $n \ge 24$, $3 + [3\nmid n]$ is an upper bound only, and whether it is exact
 is open. Any bound of the form $E_{\ge 8}(n) \ge 2$ for all $n$ is
 already a strengthening of SSNC restricted to this class; the case

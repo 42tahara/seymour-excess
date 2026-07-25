@@ -2,6 +2,23 @@
 
 The note has its own, finer-grained changelog in `note/CHANGELOG.md`.
 
+## v0.2.1 (2026-07-26)
+
+**Correction.** v0.2.0 described the band `18 ≤ n ≤ 23` as having "no
+construction". That is true of the family `G_n`, which needs `n ≥ 24`, and
+false of the blow-up family `F`, whose smallest member has `n = 20`. The claim
+was written before the smallest member of `F` was known — that came out of the
+supervision round that corrected the emptiness remark in T9 — and was not
+revisited afterwards.
+
+- **New upper bounds** `E_{≥8}(20) ≤ 5`, `E_{≥8}(21) ≤ 6`, `E_{≥8}(22) ≤ 6`,
+  `E_{≥8}(23) ≤ 6`, from blow-ups of the 5-vertex circulant tournament
+  `C₅(1,2)`. Witnesses in `data/band/`, checked by `make verify-band`;
+  `--full` re-derives that these are the minima over `F` and that `F` has no
+  member at `n = 18` or `n = 19`.
+- The band still has **no lower bound** and no search instrument that works
+  in it. That part of the v0.2.0 description was accurate.
+
 ## v0.2.0 (2026-07-26)
 
 **No claim of v0.1.0 became false.** Every published value was an upper bound,
