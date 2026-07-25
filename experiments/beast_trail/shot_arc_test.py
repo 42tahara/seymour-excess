@@ -55,7 +55,7 @@ def load_witness(path, special):
     if special == "pure-ring":
         return pure_ring(3, 8)
     if special == "n50-special":
-        p = "/Users/srm/dev/seymour-excess/data/champion_28da4a1e.json"
+        p = os.path.join(ROOT, "data", "champion_28da4a1e.json")
         w = json.load(open(p))
         return adj_from_dict(w["adj"], len(w["adj"]))
     w = json.load(open(os.path.join(ROOT, path)))

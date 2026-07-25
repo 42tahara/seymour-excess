@@ -36,7 +36,7 @@ TIGHT_SCC = {4, 5, 8, 12, 14, 15, 16, 18, 23, 24, 28, 29, 30, 31, 34, 36,
 
 
 def main():
-    w = json.load(open("/Users/srm/dev/seymour-excess/data/champion_28da4a1e.json"))
+    w = json.load(open(os.path.join(ROOT, "data", "champion_28da4a1e.json")))
     A = adj_from_dict(w["adj"], len(w["adj"]))
     n = A.shape[0]
     base_exc = exc_np(A)

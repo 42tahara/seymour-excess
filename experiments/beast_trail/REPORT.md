@@ -13,7 +13,7 @@
 ### 対象
 
 - n=53: `champion_n53_ca40b396.json` (graph_sha1 `dc922e89...`), score=5 (excess=4, min-out=17)
-- n=50: `/Users/srm/dev/seymour-excess/data/champion_28da4a1e.json` (graph_sha1 `17cd7dc8...`), score=5 (excess=5, min-out=10)
+- n=50: `data/champion_28da4a1e.json` (graph_sha1 `17cd7dc8...`), score=5 (excess=5, min-out=10)
 
 ### 定義 (evaluate.py の変数と一致)
 
