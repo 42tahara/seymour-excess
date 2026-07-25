@@ -1,7 +1,8 @@
 This repository is dual-licensed by directory:
 
-  * Code (constructions/, verify/, experiments/, Makefile): MIT License (below)
-  * Data and documents (data/, note/, README.md): Creative Commons
+  * Code (constructions/, verify/, experiments/, blowup/, lib/, Makefile):
+    MIT License (below)
+  * Data and documents (data/, note/, docs/, README.md): Creative Commons
     Attribution 4.0 International (CC-BY 4.0),
     https://creativecommons.org/licenses/by/4.0/
 

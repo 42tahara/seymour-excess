@@ -43,7 +43,7 @@ def legacy_sha1(obj):
 # explicit (fail-closed) rather than a recursive walk: data/ also holds solver
 # logs and sweep records, and a rule that guessed which files are graphs would
 # silently skip a corrupt witness instead of failing on it.
-WITNESS_DIRS = ("", "sonar_best")
+WITNESS_DIRS = ("", "sonar_best", "sonar_high")
 
 # .json files under those directories that are records, not witness graphs.
 NON_GRAPH = ("en_sweep.json", "pisa_results.json",

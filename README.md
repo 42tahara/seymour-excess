@@ -44,12 +44,19 @@ to SSNC.
 
 ## Terminology: floor, bound, attainment
 
-v0.1.0's README used "floor" for values reached by search — the word appears
-11 times there, three of them as the phrase "the measured floor", the rest as
-"the floor" applied to a measured value. It was already against the project's
-own rule that a search attainment is an upper bound and not a floor, and the
-improvements in this version are what made the non-compliance visible. The
-counts are checkable against the archived v0.1.0. Three words are now kept
+v0.1.0's README used "floor" for values reached by search. It was already
+against the project's own rule that a search attainment is an upper bound and
+not a floor, and the improvements in this version are what made the
+non-compliance visible. The count is checkable, so here is the command rather
+than only the number:
+
+```bash
+git show v0.1.0:README.md | grep -o -i floor | wc -l     # 11
+```
+
+Three of the eleven are the phrase "the measured floor" (collapse newlines
+first: one of them straddles a line break), four more are "the floor" applied
+to a measured value, and the first is the title. Three words are now kept
 apart:
 
 | word | meaning | evidence value |
@@ -179,7 +186,11 @@ directions, and construction alone adjudicated each time (note §5.2).
   been carrying the composite values. Above the surveyed band the gap is
   narrower but persists: over the 50 orders 101 ≤ n ≤ 150 the best stored
   witness matches `3 + [3∤n]` at 40 of them and stands above it at 10,
-  attaining 5 or 6 against a construction value of 4.
+  attaining 5 or 6 against a construction value of 4, the largest shortfall
+  being +2. Those 50 witnesses ship in `data/sonar_high/` and the sentence is
+  re-derived from them by `make verify-m1-high`; none of them falls *below*
+  the construction, which the checker treats as a hard failure rather than a
+  count, since it would be a new bound rather than a shortfall.
 - **Too low.** At the primes n = 59 and n = 61 an earlier search settled on
   excess 7, read as a "floor = ring length + 1" pattern at primes. It was a
   basin artefact; the pre-registered hypothesis is **rejected**, the
@@ -193,11 +204,13 @@ directions, and construction alone adjudicated each time (note §5.2).
 Not uniform, and a reader comparing claims should know which tier each rests
 on (note §3.4). Measured field by field:
 
-| log | fields/row | model hash | solver version | workers |
-|---|---|---|---|---|
-| `data/gkz82_results.jsonl` (T6) | 7 | — | — | — |
-| `data/excess2_results.jsonl` (T2) | 4, and 7 on one row | one row only | one row only | — |
-| `data/excess3_probe_results.jsonl` (reachability) | 12 | ✓ | ✓ | ✓ |
+| log | rows | fields/row | model hash | solver version | workers |
+|---|---|---|---|---|---|
+| `data/gkz82_results.jsonl` (T6) | 25 | 7, and 6 on the three oldest rows | 0 | 0 | 0 |
+| `data/excess2_results.jsonl` (T2) | 8 | 4, and 7 on one row | 1 | 1 | 0 |
+| `data/excess3_probe_results.jsonl` (reachability) | 4 | 13 | 4 | 4 | 4 |
+
+None of the three records a solver seed.
 
 All models are in this repository and can be re-run; only the third log pins
 down the binary that produced it. Two rows record a status changing on re-run,
@@ -241,9 +254,9 @@ lib/dist2core/   shared distance-2 encoding and invariant library, every
                  and small quasi-kernel); **this repository makes no claim
                  about either** — the code is shared because splitting it
                  would create two copies that drift
-data/            witness graphs (sha1-manifested, including sonar_best/ with
-                 one best witness per order 24..100), sweep tables, solver
-                 logs, blow-up records
+data/            witness graphs (sha1-manifested): sonar_best/ has one best
+                 witness per order 24..100, sonar_high/ one per order
+                 101..150; plus sweep tables, solver logs, blow-up records
 experiments/     the search pipeline and the CP-SAT models
 docs/            the review trail: supervision findings (SHOKEN_*), the claim
                  report they audited, and the cross-lineage review transcripts
@@ -265,10 +278,13 @@ this repository claims.
    for quotients on m ≥ 7 vertices, and for constructions that are not
    blow-ups at all?
 4. **δ = 8 local feasibility.** The δ = 7 local INFEASIBLE argument
-   (arXiv:2606.30588) does not extend directly: 12 of 340 rows of our δ = 8
-   generalisation are locally consistent (all in the b = 7, k = 3 family), and
-   **36 rows are undecided** — 16 still UNKNOWN after splitting, 20 never
-   started.
+   (arXiv:2606.30588) does not extend directly: in a δ = 8 generalisation of
+   it, 12 of 340 rows are locally consistent (all in the b = 7, k = 3 family)
+   and 36 rows are undecided — 16 still UNKNOWN after splitting, 20 never
+   started. **The row-level log for this is not published here**, so unlike
+   everything else in this README the figures are not checkable from this
+   repository; treat them as a statement of where the work stopped, not as a
+   verified result.
 5. **A certificate for infeasibility.** Every INFEASIBLE result here rests on
    an encoding argument and on solver soundness. A proof-logging solver would
    remove the second dependency; T8 removes it at n = 17 by dispensing with

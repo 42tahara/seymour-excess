@@ -33,4 +33,7 @@ Add citation to Dara–Francis–Jacob–Narayanan (DAM 2022); reposition Proble
 and Prop 4.1 relative to their conjecture. No mathematical content changed.
 
 ## v1.0 (2026-07-23)
-First public release (DOI 10.5281/zenodo.21497889).
+First public release. The version DOI 10.5281/zenodo.21497889 was minted
+for this line of the note; whether it points at v1.0 or at v1.1 has not been
+re-checked against the Zenodo record here, so cite the concept DOI
+(10.5281/zenodo.21497888) unless you have confirmed the version.

@@ -9,6 +9,7 @@ verify-all:            ## all fast checks (seconds; t2/t6 use recorded logs)
 	$(PY) verify/check_t7_from_spec.py
 	$(PY) constructions/upper_bound_family.py --verify
 	$(PY) verify/check_t8.py
+	$(PY) verify/check_m1_high.py
 	$(PY) verify/check_m1.py
 
 verify-hashes:         ## data/ graphs match manifest.json
@@ -49,3 +50,17 @@ verify-t9:             ## T9: blow-up class, 4 independent checks of "excess<=3 
 
 verify-m1:             ## M1: re-score the 77 measured witnesses in data/sonar_best/ (n=24..100)
 	$(PY) verify/check_m1.py
+
+verify-m1-high:        ## the 101..150 shortfall claim of note 5.2 (40 match, 10 above)
+	$(PY) verify/check_m1_high.py
+
+verify-d2core:         ## lib/dist2core: 3-implementation agreement + witness regression
+	$(PY) lib/dist2core/tests/test_invariants.py
+	$(PY) lib/dist2core/tests/test_regression.py
+
+verify-d2core-t2:      ## lib/dist2core: re-prove E(17) >= 3 from a rebuilt model (~4 min)
+	$(PY) lib/dist2core/tests/test_n17_infeasible.py
+
+verify-blowup-calib:   ## blowup/: closed form vs family, stored witnesses, random cases
+	$(PY) blowup/blowup_sweep.py --verify
+	$(PY) blowup/blowup_inverse.py --test
