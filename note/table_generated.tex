@@ -1,20 +1,32 @@
-\begin{tabular}{rllll}
-$n$ & construction & search & best known & witness \\ \hline
-24 & 3 (ring m=3,k=1,t=8) & - & 3 & \texttt{2517130b} \\
-25 & 5 (ring m=5,k=2,t=5) & 12 & 5 & \texttt{93072b44} \\
-27 & 3 (ring m=3,k=1,t=9) & - & 3 & \texttt{5b5ae497} \\
-30 & 3 (ring m=3,k=1,t=10) & 3 & 3 & \texttt{\emph{(thm)}} \\
-35 & 5 (ring m=5,k=2,t=7) & 7 & 5 & \texttt{5a88d73d} \\
-40 & 4 (ring m=4,k=1,t=10) & 23 & 4 & \texttt{\emph{(thm)}} \\
-45 & 3 (ring m=3,k=1,t=15) & 21 & 3 & \texttt{\emph{(thm)}} \\
-47 & 5 (keystone transplant) & 9 & 5 & \texttt{21f36278} \\
-48 & 3 (ring m=3,k=1,t=16) & 13 (seed-free) & 3 & \texttt{d43ca1db} \\
-49 & 7 (ring m=7,k=2,t=7) & 6 & 6 & \texttt{ead3c3c3} \\
-50 & 5 (ring m=5,k=1,t=10) & 5 (20 seed-free) & 5 & \texttt{17cd7dc8} \\
-51 & 3 (ring m=3,k=1,t=17) & - & 3 & \texttt{e5d2d5eb} \\
-53 & 5 (keystone transplant) & 5 & 5 & \texttt{dc922e89} \\
-57 & 3 (ring m=3,k=1,t=19) & - & 3 & \texttt{8210dcab} \\
-59 & 5 (keystone transplant) & 7 & 5 & \texttt{3eedc493} \\
-60 & 3 (ring m=3,k=1,t=20) & 33 & 3 & \texttt{\emph{(thm)}} \\
-75 & 3 (ring m=3,k=1,t=25) & 3 & 3 & \texttt{\emph{(thm)}} \\
+\textbf{Table 1.} Surveyed orders: the theorem against the constructions it supersedes.\par\smallskip
+\begin{tabular}{rclll}
+$n$ & $3+[3\nmid n]$ & earlier construction & fresh search & best stored witness \\ \hline
+24 & 3 & 3 (ring m=3,k=1,t=8) & - & \texttt{2517130b} \\
+25 & 4 & 5 (ring m=5,k=2,t=5) & 12 & \texttt{150003fd} \\
+27 & 3 & 3 (ring m=3,k=1,t=9) & - & \texttt{5b5ae497} \\
+30 & 3 & 3 (ring m=3,k=1,t=10) & 3 & \texttt{feba34e7} \\
+35 & 4 & 5 (ring m=5,k=2,t=7) & 7 & \texttt{ca62560c} \\
+40 & 4 & 4 (ring m=4,k=1,t=10) & 23 & \texttt{9cb88021} \\
+45 & 3 & 3 (ring m=3,k=1,t=15) & 21 & \texttt{abd86a45} \\
+47 & 4 & 5 (keystone transplant) & 9 & \texttt{ccc19f2e} \\
+48 & 3 & 3 (ring m=3,k=1,t=16) & 13 (seed-free) & \texttt{d43ca1db} \\
+49 & 4 & 7 (ring m=7,k=2,t=7) & 6 & \texttt{db2e4026} \\
+50 & 4 & 5 (ring m=5,k=1,t=10) & 5 (20 seed-free) & \texttt{bce286aa} \\
+51 & 3 & 3 (ring m=3,k=1,t=17) & - & \texttt{e5d2d5eb} \\
+53 & 4 & 5 (keystone transplant) & 5 & \texttt{8562bd98} \\
+57 & 3 & 3 (ring m=3,k=1,t=19) & - & \texttt{d02d73a9} \\
+59 & 4 & 5 (keystone transplant) & 7 & \texttt{d90d86c3} \\
+60 & 3 & 3 (ring m=3,k=1,t=20) & 33 & \texttt{44b4bca8} \\
+75 & 3 & 3 (ring m=3,k=1,t=25) & 3 & \texttt{63346a8f} \\
+\end{tabular}
+\par\medskip
+\textbf{Table 2.} The measured witnesses of \texttt{data/sonar\_best/}, summarised.\par\smallskip
+\begin{tabular}{ll}
+quantity & value \\ \hline
+orders covered & 24..100, no gaps \\
+stored witnesses & 77 (one per order) \\
+excess = $3+[3\nmid n]$ & 77 of 77 orders \\
+orders disagreeing & none \\
+min out-degree observed & 8 (n=24) .. 33 (n=99) \\
+strongly connected & 77 of 77 orders \\
 \end{tabular}
