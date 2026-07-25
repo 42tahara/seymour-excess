@@ -471,6 +471,32 @@ sharper illustration of a point this note makes elsewhere: a budget-exhausted
 UNKNOWN is evidence in neither direction, and does not even reliably indicate
 that an instance is hard.
 
+\subsection{A finite verification of a conjecture of Guo, Kang and
+Zwaneveld}\label{sec:gkz}
+
+\cite[Conj.~8.2]{GuoKangZwaneveld2026} predicts a structural property of
+Seymour-tight orientations. We record a finite verification, which belongs
+here because the note, not the repository README, is the statement of what
+this work asserts; version 1.1 carried this result only in the README, which
+is the same defect this version repairs elsewhere.
+
+\begin{proposition}[computer-assisted]\label{prop:gkz}
+For $k = 3$, Conjecture 8.2 of \cite{GuoKangZwaneveld2026} has no
+counterexample on $n$ vertices for any $7 \le n \le 30$.
+\end{proposition}
+
+The verification is a CP-SAT infeasibility scan, one instance per order; the
+hardest, $n = 29$, was first abandoned at a four-hour budget and decided at
+$29\,506$ s on a longer re-run, and both rows are kept in the log. The scan is
+non-vacuous: hypothesis graphs, i.e.\ objects satisfying the conjecture's
+premise, were exhibited at every scanned order, so the infeasibility is not
+that of an empty hypothesis. The conclusion is conditional on the encoding and
+on solver soundness in the sense of Appendix~\ref{app:model}, and this scan
+rests on the \emph{thinnest} log in the repository --- see
+\S\ref{sec:provenance}: its rows carry neither a model hash nor a solver
+version. Of the results in this note it is the one whose record we would most
+want strengthened before it is relied upon.
+
 \section{A class-limited partial lower bound}\label{sec:class}
 
 The only lower-bound-shaped statement we can prove beyond
