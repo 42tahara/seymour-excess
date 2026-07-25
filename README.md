@@ -1,9 +1,9 @@
 # The excess floor of Seymour's Second Neighbourhood Conjecture
 
 > **v0.2.0.** Supersedes [v0.1.0](https://doi.org/10.5281/zenodo.21497370)
-> (2026-07-23), which remains permanently archived and citable. **No claim of
-> v0.1.0 became false**: every published value was an upper bound, and upper
-> bounds do not become false when they improve. See
+> (2026-07-23), which remains permanently archived and citable. **All proved
+> inequalities of v0.1.0 remain valid**; this version corrects notation,
+> interpretation and provenance. See
 > [What changed since v0.1.0](#what-changed-since-v010).
 
 **The note is the authoritative statement of what this repository asserts**
@@ -26,11 +26,11 @@ excess(G) = Σ_v max(0, d(v) + 1).
 Two minima are used here and must not be conflated:
 
 ```
-E_δ(n)     = min excess over ALL n-vertex oriented graphs with min out-degree ≥ δ
-E_δ^sc(n)  = min excess over the STRONGLY CONNECTED ones only
+E_{≥d}(n)     = min excess over ALL n-vertex oriented graphs with min out-degree ≥ d
+E^sc_{≥d}(n)  = min excess over the STRONGLY CONNECTED ones only
 ```
 
-`E_δ(n) ≤ E_δ^sc(n)`, since the second minimises over a subclass. Note v1.1
+`E_{≥d}(n) ≤ E^sc_{≥d}(n)`, since the second minimises over a subclass. Note v1.1
 defined only the second and called it `E`; v0.1.0's README defined only the
 first; the two were used interchangeably. Every claim below holds for both,
 and the reason is stated per claim rather than left implicit: an upper bound
@@ -39,7 +39,7 @@ argument run without a connectivity constraint rules out the larger class and
 hence the subclass too.
 
 We study δ = 8, the first open regime of Seymour's Second Neighbourhood
-Conjecture (SSNC, 1990): `E_{δ≥8}(n) = 0` for some n would be a counterexample
+Conjecture (SSNC, 1990): `E_{≥8}(n) = 0` for some n would be a counterexample
 to SSNC.
 
 ## Terminology: floor, bound, attainment
@@ -61,11 +61,11 @@ apart:
 
 | word | meaning | evidence value |
 |---|---|---|
-| **floor** | `E_δ(n)` itself — the exact minimum | **We do not know it at a single n ≥ 18.** At n = 17 we do: it is 17 (T8) |
+| **floor** | `E_{≥d}(n)` itself — the exact minimum | **We do not know it at a single n ≥ 18.** At n = 17 we do: it is 17 (T8) |
 | **bound** | a proved inequality: an *upper* bound from an explicit verified witness, a *lower* bound from an exhaustive or infeasibility argument | evidence |
 | **attainment** | the best value some search actually reached | evidence for an **upper** bound only. **Never** for a lower bound |
 
-A search that fails to go below v establishes nothing about `E_δ(n)`. This
+A search that fails to go below v establishes nothing about `E_{≥d}(n)`. This
 repository records two instances of that failure mode pointing in *opposite*
 directions ([below](#search-attainment-is-not-a-floor)).
 
@@ -80,12 +80,12 @@ version stay unambiguous; new claims get new labels.
 
 | # | Claim | Proved in | Novelty | Verify with |
 |---|---|---|---|---|
-| **T7** | `E_{δ≥8}(n) ≤ E^sc_{δ≥8}(n) ≤ 3 + [3∤n]` for every **n ≥ 24**, from one explicit family `G_n` | note Thm 2.6 (Lemmas 2.1–2.5) | new candidate | `make verify-t7`, `make verify-t7-spec` |
-| **T8** | `E_{δ≥k}(2k+1) = E^sc_{δ≥k}(2k+1) = 2k+1` for every **k ≥ 1**; in particular `E_{δ≥8}(17) = 17`. Every admissible graph at those orders has excess exactly 2k+1 — it is the only value the class takes | note Prop 3.1 | **folklore** — see below | `make verify-t8` |
-| **T9** | class-limited partial lower bound inside one explicitly defined family of capped-tournament blow-ups. **Not a lower bound on `E`** — see [below](#t9-in-full) | note Thm 4.1, App. B | new candidate | `make verify-t9` (~2 min) |
+| **T7** | `E_{≥8}(n) ≤ E^sc_{≥8}(n) ≤ 3 + [3∤n]` for every **n ≥ 24**, from one explicit family `G_n` | note Thm 2.6 (Lemmas 2.1–2.5) | new candidate | `make verify-t7`, `make verify-t7-spec` |
+| **T8** | `E_{≥k}(2k+1) = E^sc_{≥k}(2k+1) = 2k+1` for every **k ≥ 1**; in particular `E_{≥8}(17) = 17`. Every admissible graph at those orders has excess exactly 2k+1 — it is the only value the class takes | note Prop 3.1 | **folklore** — see below | `make verify-t8` |
+| **T9** | **computer-assisted.** class-limited partial lower bound inside one explicitly defined family of capped-tournament blow-ups. **Not a lower bound on `E`** — see [below](#t9-in-full) | note Thm 4.1, App. B | new candidate | `make verify-t9` (~2 min) |
 | T7′ | (was **T1**) pure m-ring: `E ≤ min{m≥3 : m∣n, n/m≥8}` | note §2.3 | subsumed by T7 | `make verify-t1` |
 | T7″ | (was **T1′**) cycle-power ring; in particular `E(25)≤5, E(35)≤5, E(49)≤7` | note §2.3 | subsumed by T7 (which gives 4, 4, 4) | `make verify-t1p` |
-| T2 | `E_{δ≥8}(17) ≥ 3` (CP-SAT, `exc ≤ 2` INFEASIBLE, 357 s) | note §3.3 | superseded by T8, which is exact and elementary | `make verify-t2` |
+| T2 | `E_{≥8}(17) ≥ 3` (CP-SAT, `exc ≤ 2` INFEASIBLE, 357 s) | note §3.3 | superseded by T8, which is exact and elementary | `make verify-t2` |
 | T5 | The Pisa structure conjecture (arXiv:2601.21563, Conj 5.1) is false: counterexamples at n = 8, 48, 50 and a minimal one at n = 7 | note Rmk 6.2 | refutation of a published conjecture | `make verify-t5` |
 | T6 | GKZ Conjecture 8.2 (arXiv:2603.29626) holds for k = 3 for all 7 ≤ n ≤ 30 | note Prop 3.3 | finite verification of a published conjecture | `make verify-t6` |
 | O1 | (was: evolved witnesses at n = 50) `E(50) ≤ 5` via `champion_28da4a1e` | note §6, Rmk 6.1 | superseded by T7 (which gives 4); the witness is kept because §6 analyses it | `make verify-o1` |
@@ -123,7 +123,7 @@ Quote it; do not summarise it.
 > Every G ∈ F satisfies excess(G) ≥ 3, and if excess(G) = 3 then 3 ∣ n. The
 > quantification is over the members of F, with no bound on n.
 >
-> **This is not a lower bound on `E_{δ≥8}(n)`.** Since most oriented graphs
+> **This is not a lower bound on `E_{≥8}(n)`.** Since most oriented graphs
 > are not blow-ups of the above kind, this claim says nothing whatsoever about
 > anything outside F.
 
@@ -164,23 +164,25 @@ Short, because there is little to say:
   the value rather than lowering it — at n = 5, k = 2 there is a digon-free
   graph with δ⁺ = 1 and excess 3, not 5. `E(17) = 17` is not evidence for a
   lower bound anywhere else.
-- **18 ≤ n ≤ 23: nothing.** No construction (`G_n` needs n ≥ 24), no lower
+- **18 ≤ n ≤ 23: no positive lower bound.** No construction (`G_n` needs n ≥ 24), no lower
   bound, and no working search instrument — the density forced by δ⁺ ≥ 8
   leaves almost no legal local moves.
-- **n ≥ 24: nothing.** `3 + [3∤n]` is an upper bound only; whether it is exact
+- **n ≥ 24: no positive lower bound.** `3 + [3∤n]` is an upper bound only; whether it is exact
   is open. The direct CP-SAT model does not reach the orders that matter:
   `exc ≤ 3` is INFEASIBLE at n = 17 in 1,356 s and UNKNOWN at n = 19 and
   n = 20 within 1,800 s each.
 
-Any bound `E_{δ≥8}(n) ≥ 2` for all n is already a strengthening of SSNC
+Any bound `E_{≥8}(n) ≥ 2` for all n is already a strengthening of SSNC
 restricted to this class. Nothing here is described as "essentially settled".
 
 ## Search attainment is not a floor
 
-The methodological result of the project. Attainment was wrong in **both**
-directions, and construction alone adjudicated each time (note §5.2).
+The methodological result of the project. Search attainment overstated the best available upper
+bound in every discrepancy recorded, and in each one an explicit construction —
+never a further search — settled it (note §5.2). The two failures below differ
+in kind, not in direction.
 
-- **Too high.** A pre-registered control — fresh search on the composites
+- **Failure by non-attainment.** A pre-registered control — fresh search on the composites
   n = 48, 50 with all construction seeds withheld — returned 13 and 20 against
   construction values 3 and 5 at the same orders. The seed, not the search, had
   been carrying the composite values. Above the surveyed band the gap is
@@ -191,7 +193,7 @@ directions, and construction alone adjudicated each time (note §5.2).
   re-derived from them by `make verify-m1-high`; none of them falls *below*
   the construction, which the checker treats as a hard failure rather than a
   count, since it would be a new bound rather than a shortfall.
-- **Too low.** At the primes n = 59 and n = 61 an earlier search settled on
+- **Failure by false pattern inference.** At the primes n = 59 and n = 61 an earlier search settled on
   excess 7, read as a "floor = ring length + 1" pattern at primes. It was a
   basin artefact; the pre-registered hypothesis is **rejected**, the
   construction gives 4 at both, and witnesses of excess 4 at both are stored.
@@ -224,7 +226,7 @@ Both rows are kept.
 ## A note on the Pisa framing
 
 v0.1.0 said that optimal and near-optimal graphs here have maximum margin 0,
-i.e. are Pisa graphs, so that `E_δ(n)` counts the margin-0 vertices such a
+i.e. are Pisa graphs, so that `E_{≥d}(n)` counts the margin-0 vertices such a
 graph must carry. **That holds only when 3 ∣ n.** At 3 ∤ n the family `G_n`
 contains a vertex of margin +1 (excess 4 = 2 + 1 + 1), so it is not Pisa.
 Checked directly: `verify/check_t7_from_spec.py` rebuilds `G_n` from the
@@ -267,8 +269,8 @@ docs/            the review trail: supervision findings (SHOKEN_*), the claim
 Stated as of 2026-07-26. Naming an open question, with a date, is part of what
 this repository claims.
 
-1. **Is `3 + [3∤n]` exact?** Equivalently, is `E_{δ≥8}(n) ≥ 3` for all n with
-   equality when 3 ∣ n? There is **no lower-bound evidence at any n ≥ 18** —
+1. **Is `3 + [3∤n]` exact?** Equivalently, is `E_{≥8}(n) ≥ 3` for all n with
+   equality when 3 ∣ n? There is **no positive lower bound at any n ≥ 18**, only the trivial `≥ 0` —
    only the class-limited T9, and the fact that a broad sweep never went below
    the construction. The case "≥ 2 for all n" is the restriction to this class
    of a conjecture of Dara, Francis, Jacob and Narayanan (DAM 2022).
@@ -298,20 +300,21 @@ this repository claims.
 
 ## What changed since v0.1.0
 
-v0.1.0 and its DOI are permanent, and nothing in it became false: every
-published value was an upper bound, and T2's `≥ 3` follows from T8's exact
-value.
+v0.1.0 and its DOI are permanent. Every inequality it proved is still valid —
+the published values were upper bounds, which do not become false when they
+improve, and T2's `≥ 3` follows from T8's exact value. What this version
+corrects is notation, interpretation and provenance, listed below.
 
 | v0.1.0 | v0.2.0 | why |
 |---|---|---|
 | T1′: E(25) ≤ 5, E(35) ≤ 5, E(49) ≤ 7 | 4, 4, 4 | T7 |
-| T2: E(17) ≥ 3, by CP-SAT (357 s) | E(17) = 17 exactly, by an elementary proof, as the k = 8 case of `E_{δ≥k}(2k+1) = 2k+1` | T8 |
+| T2: E(17) ≥ 3, by CP-SAT (357 s) | E(17) = 17 exactly, by an elementary proof, as the k = 8 case of `E_{≥k}(2k+1) = 2k+1` | T8 |
 | O1: E(50) ≤ 5 | 4 | T7 |
 | attainments E(40)→23, E(45)→21, E(60)→33 | 4, 3, 3 | T7 |
 | a measured value called "the floor" (11 occurrences) | attainment, not floor | the prose is brought into line with the project's own rule, which already said so |
 | the n = 50 three-point coincidence "still wants an explanation" | recorded as history: at the time 5 looked minimal at n = 50 and three quantities agreeing at 5 looked like a phenomenon. A graph of excess 4 was then constructed, so two of the three numbers were never a minimum and there is no coincidence left to explain | T7 — the question is withdrawn, not answered |
-| `E_δ(n)` "measures the minimum number of margin-0 vertices" | holds for 3 ∣ n only | `G_n` has a +1 margin vertex when 3 ∤ n |
-| one symbol `E`, defined without strong connectivity in the README and with it in the note | `E_δ` and `E_δ^sc` defined separately; each claim says which it bounds | the two were being used interchangeably; no value changes, but the statements were ambiguous |
+| `E_{≥d}(n)` "measures the minimum number of margin-0 vertices" | holds for 3 ∣ n only | `G_n` has a +1 margin vertex when 3 ∤ n |
+| one symbol `E`, defined without strong connectivity in the README and with it in the note | `E_{≥d}` and `E^sc_{≥d}` defined separately; each claim says which it bounds | the two were being used interchangeably; no value changes, but the statements were ambiguous |
 | the README claim table was the authoritative statement | the note is; the README maps it | note v1.1 said authority would pass to the note "until v1.0 lands", and that sentence was never updated after v1.0 landed |
 | search: LLM-driven program evolution | pure-CPU hill climbing | the classical search reached the same values faster and over more orders |
 
@@ -335,7 +338,7 @@ judged on the verifiability of the claims, not on the nature of the authors.
   oriented graph has at least two Seymour vertices; open problem 1 is its
   restriction to this class.
 - **arXiv:2606.30588 (with Kaneko–Locke 2001)** — minimum out-degree ≥ 8 for
-  any SSNC counterexample; this theorem is baked into `E_δ`'s constraint.
+  any SSNC counterexample; this theorem is baked into `E_{≥d}`'s constraint.
 
 ## Cite as
 

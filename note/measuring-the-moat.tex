@@ -22,6 +22,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage[hidelinks]{hyperref}
 \usepackage{booktabs}
+\usepackage{tikz}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -48,20 +49,20 @@ Seymour's second neighbourhood conjecture (SSNC) asserts that every oriented
 graph has a vertex whose second out-neighbourhood is at least as large as its
 first. For an oriented graph $G$ define
 $\exc(G) = \sum_v \max(0,\, d_2(v) - d_1(v) + 1)$; then $\exc(G) = 0$ iff $G$
-is a counterexample. Let $E_\delta(n)$ be the minimum excess over $n$-vertex
-oriented graphs of minimum out-degree at least $\delta$, and $\Esc_\delta(n)$
+is a counterexample. Let $E_{\ge d}(n)$ be the minimum excess over $n$-vertex
+oriented graphs of minimum out-degree at least $\delta$, and $\Esc_{\ge d}(n)$
 the same minimum over the strongly connected ones. We prove
-$E_{\delta \ge 8}(n) \le \Esc_{\delta \ge 8}(n) \le 3 + [3 \nmid n]$ for every
+$E_{\ge 8}(n) \le \Esc_{\ge 8}(n) \le 3 + [3 \nmid n]$ for every
 $n \ge 24$, by exhibiting one explicit family; this subsumes every upper bound
 of the previous version. At the opposite extreme we determine $E$ exactly on a
-degenerate family: $E_{\delta \ge k}(2k+1) = 2k+1$ for all $k \ge 1$, by an
+degenerate family: $E_{\ge k}(2k+1) = 2k+1$ for all $k \ge 1$, by an
 elementary argument that replaces a solver computation. Inside one explicitly
 defined class of capped-tournament blow-ups we prove a partial lower bound,
 $\exc \ge 3$ with equality forcing $3 \mid n$; we emphasise that this says
 nothing outside that class. No lower bound is known at any $n \ge 18$. We also
-record, as a methodological result, that search attainment values in this
-landscape were wrong in both directions, and that only construction ever
-adjudicated.
+record, as a methodological result, that search attainment overstated the
+best available upper bound in every discrepancy, and that in each case an
+explicit construction, not a further search, settled it.
 \end{abstract}
 
 \maketitle
@@ -107,11 +108,11 @@ produces $\exc = 1$ trivially \cite[\S1]{GuoKangZwaneveld2026}, so the
 interesting quantity carries the degree bound that counterexamples must
 satisfy. \emph{Two} minima are used here and they must not be conflated:
 \begin{align*}
-E_\delta(n) &= \min\{\exc(G) : |V(G)| = n,\ G \text{ oriented},\
+E_{\ge d}(n) &= \min\{\exc(G) : |V(G)| = n,\ G \text{ oriented},\
    \delta^+(G) \ge \delta\},\\
-\Esc_\delta(n) &= \text{the same minimum over the strongly connected such } G.
+\Esc_{\ge d}(n) &= \text{the same minimum over the strongly connected such } G.
 \end{align*}
-Since the second minimises over a subclass, $E_\delta(n) \le \Esc_\delta(n)$.
+Since the second minimises over a subclass, $E_{\ge d}(n) \le \Esc_{\ge d}(n)$.
 Version 1.1 of this note defined only $\Esc$, writing it $E$, while the
 accompanying repository defined only $E$; the two were used interchangeably.
 They are separated here, and every statement below says which one it bounds.
@@ -122,15 +123,15 @@ restriction to strong connectivity is motivated by the minimal-counterexample
 reduction --- a closed out-section of a counterexample is a smaller
 counterexample, cf.\ \cite{EspunyDiazGiraoGranetKronenberg2024}.
 
-$E_{\delta \ge 8}(n) = 0$ for some $n$ iff SSNC is false. If SSNC holds then
-$E_{\delta \ge 8}(n) \ge 1$ for all $n$, and any stronger uniform lower bound
+$E_{\ge 8}(n) = 0$ for some $n$ iff SSNC is false. If SSNC holds then
+$E_{\ge 8}(n) \ge 1$ for all $n$, and any stronger uniform lower bound
 is a strengthening of the conjecture.
 
 \subsection*{Terminology: floor, bound, attainment}
 Version 1.1 and the repository README used the word ``floor'' for values
 reached by search. They are not floors, and the improvements reported here are
 what made that visible. Three words are kept apart throughout:
-\emph{floor} means $E_\delta(n)$ itself, the exact minimum --- which we do not
+\emph{floor} means $E_{\ge d}(n)$ itself, the exact minimum --- which we do not
 know at a single $n \ge 18$; \emph{bound} means a proved inequality; and
 \emph{attainment} means the best value some search actually reached, which is
 evidence for an upper bound and never for a lower one. Section~\ref{sec:notfloor}
@@ -139,18 +140,18 @@ is the record of what happens when the three are mixed.
 \subsection*{Contributions}
 \begin{enumerate}
 \item \textbf{A flat upper bound} (\S\ref{sec:constructions}): one explicit
-  family gives $\Esc_{\delta \ge 8}(n) \le 3 + [3 \nmid n]$ for every
+  family gives $\Esc_{\ge 8}(n) \le 3 + [3 \nmid n]$ for every
   $n \ge 24$ (Theorem~\ref{thm:flat}). It subsumes the pure-ring,
   cycle-power and keystone-transplant bounds of version 1.1, which are
   retained as provenance in \S\ref{sec:legacy}.
 \item \textbf{An exact value on a degenerate family} (\S\ref{sec:lower}):
-  $E_{\delta \ge k}(2k+1) = \Esc_{\delta \ge k}(2k+1) = 2k+1$ for every
+  $E_{\ge k}(2k+1) = \Esc_{\ge k}(2k+1) = 2k+1$ for every
   $k \ge 1$ (Proposition~\ref{prop:odd}), by six lines of argument. The
   $k = 8$ case supersedes the computer-assisted $E(17) \ge 3$ of version 1.1.
 \item \textbf{A class-limited partial lower bound} (\S\ref{sec:class},
   Appendix~\ref{app:class}): inside one explicitly defined family of
   capped-tournament blow-ups, $\exc \ge 3$, with equality forcing
-  $3 \mid n$. This is \emph{not} a lower bound on $E_{\delta \ge 8}$.
+  $3 \mid n$. This is \emph{not} a lower bound on $E_{\ge 8}$.
 \item \textbf{Measurements and a measurement-theoretic caveat}
   (\S\ref{sec:measurements}): search attainment was wrong in both
   directions, and construction alone adjudicated each time.
@@ -235,6 +236,32 @@ The arcs of $G_n$ are exactly
   transitive tournament, truncated at the cap $c_a$).
 \end{itemize}
 
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[>=stealth, node distance=34mm]
+  \node[draw, rounded corners, minimum width=20mm, minimum height=9mm] (L0)
+    {$L_0$\;\small$(s_0)$};
+  \node[draw, rounded corners, minimum width=20mm, minimum height=9mm,
+        right of=L0] (L1) {$L_1$\;\small$(s_1)$};
+  \node[draw, rounded corners, minimum width=20mm, minimum height=9mm,
+        right of=L1] (L2) {$L_2$\;\small$(s_2)$};
+  \draw[->, thick] (L0) -- node[above,font=\small] {all arcs} (L1);
+  \draw[->, thick] (L1) -- node[above,font=\small] {all arcs} (L2);
+  \draw[->, thick] (L2) to[out=-25,in=-155]
+       node[below,font=\small] {all arcs} (L0);
+  \foreach \n in {L0,L1,L2}
+    \draw[->] (\n.north west) to[out=115,in=65]
+       node[above,font=\small] {$c_a$} (\n.north east);
+\end{tikzpicture}
+\caption{The family $G_n$. Layer sizes are $s_a = \lfloor n/3 \rfloor +
+[a < r]$, so they differ by at most one. Between layers, every arc runs
+forward; inside a layer, a transitive tournament truncated at the cap $c_a$.
+For $v \in L_a$, $N_1^+(v)$ is $L_{a+1}$ together with at most $c_a$
+same-layer vertices, while $N_2^+(v) = L_{a+2}$ exactly
+(Lemma~\ref{lem:n2}) --- the intra-layer arcs raise $d_1$ without ever
+enlarging $N_2^+$.}\label{fig:family}
+\end{figure}
+
 \begin{lemma}[well-formedness]\label{lem:wf}
 $G_n$ is an oriented graph, is strongly connected, and has
 $\delta^+(G_n) = \lfloor n/3 \rfloor$.
@@ -257,9 +284,13 @@ $N_2^+(u_{a,j}) = L_{a+2}$, hence $d_2(u_{a,j}) = s_{a+2}$.
 \end{lemma}
 
 \begin{proof}
-Write $p = \min(j, c_a)$, so
-$N_1^+(u_{a,j}) = L_{a+1} \cup \{u_{a,0}, \dots, u_{a,p-1}\}$. Take the union
-of out-neighbourhoods over $N_1^+$. Every $x \in L_{a+1}$ contributes
+By definition
+\[
+N_2^+(v) \;=\; \Bigl(\bigcup_{x \in N_1^+(v)} N_1^+(x)\Bigr)
+  \setminus \bigl(N_1^+(v) \cup \{v\}\bigr),
+\]
+so it suffices to compute the union and then delete. Write $p = \min(j, c_a)$,
+so $N_1^+(u_{a,j}) = L_{a+1} \cup \{u_{a,0}, \dots, u_{a,p-1}\}$. Every $x \in L_{a+1}$ contributes
 $N_1^+(x) = L_{a+2} \cup (\text{some vertices of } L_{a+1})$; $L_{a+1}$ is
 non-empty and each such $x$ covers all of $L_{a+2}$, so the union contains
 $L_{a+2}$ and nothing outside $L_{a+2} \cup L_{a+1}$. Every $u_{a,l}$ with
@@ -320,7 +351,7 @@ $\delta^+ = \lfloor n/3 \rfloor \ge 8$, and
 \[
 \exc(G_n) \;=\; 3 + [\,3 \nmid n\,].
 \]
-Consequently $E_{\delta \ge 8}(n) \le \Esc_{\delta \ge 8}(n)
+Consequently $E_{\ge 8}(n) \le \Esc_{\ge 8}(n)
 \le 3 + [3 \nmid n]$ for every $n \ge 24$.
 \end{theorem}
 
@@ -333,7 +364,7 @@ is $0+3+1 = 4$. Lemma~\ref{lem:wf} gives the remaining assertions.
 
 \begin{remark}[the bound does not need $\delta = 8$]\label{rem:delta}
 $\delta^+(G_n) = \lfloor n/3 \rfloor$, so the same family gives
-$\Esc_{\delta \ge D}(n) \le 3 + [3 \nmid n]$ for every $D \le \lfloor n/3
+$\Esc_{\ge D}(n) \le 3 + [3 \nmid n]$ for every $D \le \lfloor n/3
 \rfloor$. The threshold $8$ is not what the construction is responding to.
 \end{remark}
 
@@ -342,8 +373,8 @@ When $3 \mid n$ all three $\Delta_a$ vanish and $G_n$ has three tight vertices
 and no vertex of positive margin, so it is Pisa and its excess counts tight
 vertices. When $3 \nmid n$ some layer has $\Delta_a = +1$ and contributes a
 vertex of margin $+1$ (excess $4 = 2 + 1 + 1$); such a $G_n$ is not Pisa.
-So the reading of $E_\delta$ as ``the minimum number of margin-$0$ vertices''
-is a statement about the subsequence $3 \mid n$, not about $E_\delta$ in
+So the reading of $E_{\ge d}$ as ``the minimum number of margin-$0$ vertices''
+is a statement about the subsequence $3 \mid n$, not about $E_{\ge d}$ in
 general.
 \end{remark}
 
@@ -375,8 +406,8 @@ cluster embeds in a host of prescribed order with controlled excess
 \begin{proposition}\label{prop:odd}
 Let $k \ge 1$ and $n = 2k+1$. Every oriented graph $G$ on $n$ vertices with
 $\delta^+(G) \ge k$ satisfies $\exc(G) = n$. Hence
-$E_{\delta \ge k}(2k+1) = \Esc_{\delta \ge k}(2k+1) = 2k+1$; in particular
-$E_{\delta \ge 8}(17) = 17$.
+$E_{\ge k}(2k+1) = \Esc_{\ge k}(2k+1) = 2k+1$; in particular
+$E_{\ge 8}(17) = 17$.
 \end{proposition}
 
 \begin{proof}
@@ -403,7 +434,7 @@ Proposition~\ref{prop:odd} is not new: it is the classical fact that a vertex
 of maximum score in a tournament reaches every other vertex within two steps,
 applied to a regular tournament where every vertex qualifies; the special case
 we need is \cite[Lem.~2.2]{GuoKangZwaneveld2026}. We state it because of what
-it replaces. Version 1.1 proved $E_{\delta \ge 8}(17) \ge 3$ from a CP-SAT
+it replaces. Version 1.1 proved $E_{\ge 8}(17) \ge 3$ from a CP-SAT
 infeasibility run of $357$ s, and a later run of $3\,083$ s at a higher cap
 pushed the same statement to $\ge 5$. Both are true, and both are strictly
 weaker than the six lines above. We record this rather than quietly dropping
@@ -414,7 +445,7 @@ not the strongest available.
 The hypothesis is doing all the work, and dropping it by one collapses the
 value rather than lowering it slightly. At $n = 5$, $k = 2$ the oriented graph
 with out-sets $\{3,4\}, \{3,4\}, \{3\}, \{4\}, \{2\}$ is digon-free with
-$\delta^+ = 1$ and excess $3$, not $5$. So $E_{\delta \ge 8}(17) = 17$ is an
+$\delta^+ = 1$ and excess $3$, not $5$. So $E_{\ge 8}(17) = 17$ is an
 isolated rigid point: the degree bound pins the class down to a single excess
 value, and at $n = 18$ non-tournaments of low excess are immediately
 admissible. The large value is \emph{not} evidence for a lower bound anywhere
@@ -427,7 +458,7 @@ Nothing, at any $n \ge 18$. Specifically: for $18 \le n \le 23$ there is no
 construction, no lower bound, and no working search instrument (the density
 forced by $\delta^+ \ge 8$ leaves almost no legal local moves). For
 $n \ge 24$, $3 + [3\nmid n]$ is an upper bound only, and whether it is exact
-is open. Any bound of the form $E_{\delta \ge 8}(n) \ge 2$ for all $n$ is
+is open. Any bound of the form $E_{\ge 8}(n) \ge 2$ for all $n$ is
 already a strengthening of SSNC restricted to this class; the case
 $c = 2$ is the restriction to $\delta^+ \ge 8$ of a conjecture of Dara,
 Francis, Jacob and Narayanan \cite{DaraFrancisJacobNarayanan2022} that every
@@ -513,8 +544,8 @@ The only lower-bound-shaped statement we can prove beyond
 Proposition~\ref{prop:odd} holds inside a family we define, and we are
 explicit that it says nothing outside it.
 
-\begin{theorem}[restricted to $\mathcal{F}$; see Appendix~\ref{app:class}]
-\label{thm:class}
+\begin{theorem}[computer-assisted; restricted to $\mathcal{F}$, see
+Appendix~\ref{app:class}]\label{thm:class}
 Let $\mathcal{F}$ be the family of capped-tournament blow-ups $H[n; c]$ over a
 strongly connected oriented quotient $H$ on $m$ vertices, $3 \le m \le 6$,
 whose minimum out-degree is at least $8$ (Appendix~\ref{app:class} gives the
@@ -523,7 +554,7 @@ and $\exc(G) = 3$ implies $3 \mid n$. The quantification is over the members
 of $\mathcal{F}$, with no bound on $n$.
 \end{theorem}
 
-\textbf{This is not a lower bound on $E_{\delta \ge 8}(n)$.} Most oriented
+\textbf{This is not a lower bound on $E_{\ge 8}(n)$.} Most oriented
 graphs are not blow-ups of this kind, and the statement says nothing
 whatsoever about anything outside $\mathcal{F}$; read outside $\mathcal{F}$ it
 would be a strengthening of SSNC itself. The unswept range is quotients on
@@ -560,8 +591,10 @@ from the witness manifest.
 \subsection{Search attainment is not the floor}\label{sec:notfloor}
 
 This is the methodological result of the project, and the reason for the
-terminology fixed in \S1. Attainment was wrong in \emph{both} directions, and
-construction alone adjudicated each time.
+terminology fixed in \S1. Search attainment overstated the best available
+upper bound in every discrepancy we recorded, and in each one an explicit
+construction --- never a further search --- settled the comparison. The two
+failures below differ in kind, not in direction.
 
 \emph{Too high.} A pre-registered control --- fresh search on the composites
 $n = 48, 50$ with all construction seeds withheld --- returned $13$ and $20$
@@ -639,7 +672,7 @@ to the author (private communication, July 2026).
 
 \begin{enumerate}
 \item \textbf{Is $3 + [3 \nmid n]$ exact?} Equivalently, is
-  $E_{\delta \ge 8}(n) \ge 3$ for all $n$, with equality when $3 \mid n$? We
+  $E_{\ge 8}(n) \ge 3$ for all $n$, with equality when $3 \mid n$? We
   have no lower-bound evidence at any $n \ge 18$ --- only
   Theorem~\ref{thm:class}, which is class-limited, and the fact that a broad
   sweep never went below the construction.
@@ -653,7 +686,7 @@ to the author (private communication, July 2026).
   solver would remove the second dependency. Proposition~\ref{prop:odd}
   removes it at $n = 17$ by dispensing with the solver.
 \item \textbf{Global counting.} Find a double-counting or matrix-analytic
-  proof of any bound $E_{\delta \ge 8}(n) \ge 2$. The matrix $S_D$ of
+  proof of any bound $E_{\ge 8}(n) \ge 2$. The matrix $S_D$ of
   \cite{GuoKangZwaneveld2026} expresses margins as row sums and excess as the
   positive part of $S_D \mathbf{1}$.
 \item \label{prob:transplant}\textbf{Transplant lemma.} Formulate and prove a
@@ -774,26 +807,262 @@ $\exc(G) = 3$ then $3 \mid n$. The quantification is over the members of
 $\mathcal{F}$, with no bound on $n$.
 
 \medskip
-\textbf{This is not a lower bound on $E_{\delta \ge 8}(n)$.} Since most
-oriented graphs are not blow-ups of the above kind, this claim says nothing
-whatsoever about anything outside $\mathcal{F}$.
+\textbf{This is not a lower bound on $E_{\ge 8}(n)$.} Since most oriented
+graphs are not blow-ups of the above kind, this claim says nothing whatsoever
+about anything outside $\mathcal{F}$.
 \end{quote}
 
-The proof is a finite computation, reported in the repository
-(\texttt{blowup/}) and reproduced by \texttt{make verify-t9}. Its shape: the
-per-class excess at the optimal cap depends on the class only through
-$(\Delta_a, \min(n_a, \Delta_a + 1))$, where $\Delta = Ns$ is a single linear
-map of the class-size vector; enumerating the finitely many per-class regimes
-with contribution at most $3$, and deciding integer feasibility of the
-resulting system for each quotient and each assignment of regimes to classes,
-answers the question for all $n$ at once. No upper bound on $n$ is assumed:
-for each instance a bound is derived from a Minkowski--Weyl decomposition of
-the associated polyhedron and the decision is reduced to a finite search below
-it. Four independent bounded checks accompany the computation: re-scoring the
-$73$ feasible witnesses as explicit graphs, an exhaustive evaluation of
-$2\,321\,385$ blow-ups at small orders, verification that all $357$
-irreducible elements of the recession cone have coordinate sum $\equiv 0
-\pmod 3$, and infeasibility of all $146$ base models at residues $1$ and $2$.
+The proof is computer-assisted. What is proved by hand is everything up to a
+finite decision problem; what a solver contributes is the decision itself, on
+explicitly bounded instances. This appendix gives the reduction in full, so
+that the only thing taken on trust is the solver, in the same sense as
+Appendix~\ref{app:model}.
+
+\subsection*{B.1 Per-class arithmetic}
+
+Fix $H$ and write $A(a)$ for the out-neighbourhood of $a$ in $H$,
+$B(a) = \bigcup_{b \in A(a)} A(b)$ for its two-step reach, and
+$C(a) = B(a) \setminus A(a)$. Put
+\[
+S_1(a) = \sum_{b \in A(a)} n_b, \qquad S_2(a) = \sum_{c \in C(a)} n_c .
+\]
+
+\begin{lemma}\label{lem:blowwf}
+$G = H[n;c]$ is an oriented graph iff $H$ is; $G$ is strongly connected iff
+$H$ is (for $m \ge 2$); and
+$\deg^+(u_{a,j}) = S_1(a) + \min(j, c_a)$, so
+$\delta^+(G) = \min_a S_1(a)$, independently of the caps.
+\end{lemma}
+
+\begin{proof}
+No loops, since (T) needs $l < \min(j,c_a) \le j$. A digon would need either
+$a \to b$ and $b \to a$ in $H$, or two (T) arcs in opposite directions inside
+one class, and (T) arcs decrease the index; (R) and (T) arcs never join the
+same pair. The out-degree formula is immediate from the definition, and is
+minimised at $j = 0$. For connectivity, the class partition is a congruence:
+reachability in $G$ projects onto reachability in $H$, and if $H$ is strongly
+connected then from any $u \in C_a$ one reaches all of $C_b$ for some
+$b \in A(a)$, hence, following a walk in $H$, every class entirely, and
+re-enters $C_a$ along an (R) arc.
+\end{proof}
+
+\begin{lemma}\label{lem:blown2}
+$N_2^+(u_{a,j}) = \bigcup_{c \in C(a)} C_c$, so $d_2(u_{a,j}) = S_2(a)$,
+independently of $j$ and of every cap. Consequently
+\[
+m(u_{a,j}) \;=\; \Delta_a - \min(j, c_a), \qquad
+\Delta_a \;:=\; S_2(a) - S_1(a).
+\]
+\end{lemma}
+
+\begin{proof}
+Write $p = \min(j, c_a)$, so $N_1^+(u_{a,j}) = \bigcup_{b \in A(a)} C_b \cup P$
+with $P = \{u_{a,0}, \dots, u_{a,p-1}\}$. An intra-class target $u_{a,l}$ with
+$l < p \le c_a$ has $N_1^+(u_{a,l}) = \bigcup_{b \in A(a)} C_b \cup
+\{u_{a,0},\dots,u_{a,l-1}\}$, which is contained in $N_1^+(u_{a,j})$ since
+$l - 1 < p$; the (T) arcs therefore contribute nothing new. A vertex
+$u_{b,l}$ with $b \in A(a)$ contributes $\bigcup_{c \in A(b)} C_c$ together
+with a subset of $C_b$. Unioning and deleting $N_1^+(u_{a,j}) \cup \{u_{a,j}\}$,
+which contains $\bigcup_{b \in A(a)} C_b$, leaves
+$\bigcup_{c \in B(a) \setminus A(a)} C_c$. Finally $a \notin B(a)$: otherwise
+$a \to b \to a$ would be a digon of $H$. So the deleted set, which lives in
+$C_a$, is disjoint from what remains. The margin formula follows from
+$d_1(u_{a,j}) = S_1(a) + \min(j,c_a)$.
+\end{proof}
+
+Lemma~\ref{lem:blown2} is the free out-degree mechanism of
+Lemma~\ref{lem:outset} again: the intra-class targets are chosen so that their
+out-sets already lie inside the observer's first neighbourhood.
+
+\subsection*{B.2 The class-excess function, and why it depends on two
+variables}
+
+By Lemma~\ref{lem:blown2} the contribution of class $a$ to $\exc(G)$ is
+\[
+X(a) \;=\; \sum_{j=0}^{n_a-1} \max\bigl(0,\, \Delta_a - \min(j,c_a) + 1\bigr),
+\]
+which depends on the class only through $(\Delta_a, n_a, c_a)$ --- the
+positions $j \ge c_a$ all contribute $\max(0, \Delta_a - c_a + 1)$ and the
+positions $j < c_a$ contribute $\max(0, \Delta_a - j + 1)$.
+
+\begin{lemma}\label{lem:capopt}
+$\min_{0 \le c_a \le n_a} X(a) = g(\Delta_a, n_a)$, where $g(\Delta, \nu) = 0$
+for $\Delta \le -1$ and, for $\Delta \ge 0$,
+\[
+g(\Delta, \nu) \;=\; \sum_{i=0}^{t-1} (\Delta + 1 - i)
+\;=\; t(\Delta+1) - \tbinom{t}{2},
+\qquad t = \min(\nu,\, \Delta+1).
+\]
+The minimum is attained at $c_a = \min(n_a, \max(0, \Delta_a+1))$ and also at
+$c_a = n_a$. Hence a lower bound on $\exc$ proved at the minimising cap holds
+for every cap, and the cap vector need not be enumerated.
+\end{lemma}
+
+\begin{proof}
+Increasing $c_a$ by one replaces one contribution $\max(0,\Delta_a - c_a + 1)$
+by $\max(0, \Delta_a - c_a)$, which is not larger; so $X(a)$ is non-increasing
+in $c_a$ and saturates once $c_a \ge \Delta_a + 1$, where every further
+position contributes $0$. Evaluating at saturation gives the displayed sum
+with $t = \min(n_a, \Delta_a+1)$ terms.
+\end{proof}
+
+Two monotonicity facts make the search space finite.
+
+\begin{lemma}\label{lem:regimes}
+(i) For $\Delta \ge 0$, $g(\Delta,\nu) \ge \Delta + 1$; hence if the total
+excess is at most $E$ then $\Delta_a \le E - 1$ for every $a$. (ii)
+$g(\Delta, \cdot)$ is constant for $\nu \ge \Delta+1$. Consequently, for a
+fixed budget $E$, the pairs $(\Delta_a, n_a)$ fall into finitely many
+\emph{regimes}, namely $\Delta \le -1$ with $\nu \ge 1$ (cost $0$) and, for
+each $0 \le \Delta \le E-1$, the cases $\nu = 1, \dots, \nu = \Delta$ and
+$\nu \ge \Delta+1$; only those of cost at most $E$ need be kept.
+\end{lemma}
+
+\begin{proof}
+(i) The summands are $\Delta+1, \Delta, \dots, \Delta+2-t$ with $t \ge 1$, all
+positive, so $g \ge \Delta+1$ when $t = 1$ and $g \ge (\Delta+1)+\Delta \ge
+\Delta+1$ when $t \ge 2$. (ii) $t$ saturates at $\Delta+1$.
+\end{proof}
+
+For $E = 3$ the surviving list is exactly
+\[
+\begin{array}{llll}
+\text{NEG} & \Delta \le -1 & \nu \ge 1 & \text{cost } 0\\
+\text{D0M} & \Delta = 0 & \nu \ge 1 & 1\\
+\text{D1S1} & \Delta = 1 & \nu = 1 & 2\\
+\text{D1M} & \Delta = 1 & \nu \ge 2 & 3\\
+\text{D2S1} & \Delta = 2 & \nu = 1 & 3
+\end{array}
+\]
+Note that the unit of enumeration is the pair
+$(\Delta_a, \min(n_a, \Delta_a+1))$ and not $\Delta_a$ alone: the degree
+condition binds $S_1(a) = \sum_{b \in A(a)} n_b$, not $n_a$, so single-vertex
+classes are admissible and do occur. Enumerating $\Delta$ alone would miss
+them, and the smallest excess-3 member found on four classes indeed has sizes
+$[8,1,7,8]$.
+
+\subsection*{B.3 The linear model}
+
+Let $M_1, M_2 \in \{0,1\}^{m \times m}$ be the incidence matrices of $A$ and
+of $C$, so $(M_1 s)_a = S_1(a)$ and $(M_2 s)_a = S_2(a)$ for a size vector
+$s = (n_1,\dots,n_m)^{\!\top}$, and put $N = M_2 - M_1$. Then
+$\Delta = N s$ is a \emph{single linear map} of $s$ --- not a piecewise one ---
+which is what allows the question to be inverted. Fixing an assignment of
+regimes to classes turns the constraints into a rational polyhedron
+\[
+P \;=\; \{\, s \in \mathbb{R}^m \;:\; s \ge \mathrm{lo},\ s \le \mathrm{hi},\
+   M_1 s \ge 8,\ (Ns)_a \text{ in its regime's range} \,\},
+\]
+and $n = \mathbf{1}^{\!\top} s$. Every constraint has the form
+$(\text{row}) \cdot s \le \text{const}$, and $P$ lies in the non-negative
+orthant, so $P$ is pointed.
+
+\subsection*{B.4 Removing the bound on $n$}
+
+A solver needs bounded domains. Rather than \emph{assume} a bound on $n$, one
+is \emph{derived} per instance.
+
+\begin{lemma}[bound derivation]\label{lem:mw}
+Let $P = \operatorname{conv}(V) + \operatorname{cone}(R)$ be the
+Minkowski--Weyl decomposition of $P$, with $V$ its vertices and $R$ its
+extreme rays taken integral and primitive, and set
+\[
+B \;=\; \max_{q \in V} \mathbf{1}^{\!\top} q
+   \;+\; 3 \sum_{r \in R} \mathbf{1}^{\!\top} r .
+\]
+If $P$ contains an integer point $s$ with $\mathbf{1}^{\!\top} s \equiv \rho
+\pmod 3$, then it contains one with $\mathbf{1}^{\!\top} s \le B$ and the same
+residue $\rho$.
+\end{lemma}
+
+\begin{proof}
+Write $s = q + \sum_i \mu_i r_i$ with $q \in \operatorname{conv}(V)$ and
+$\mu_i \ge 0$, and put $s' = s - \sum_i 3\lfloor \mu_i/3 \rfloor r_i$. The
+subtracted coefficients are non-negative and at most $\mu_i$, so $s' \in P$;
+the $r_i$ are integral, so $s'$ is integral; each subtracted term has
+coordinate sum $3 \lfloor \mu_i/3 \rfloor \, \mathbf{1}^{\!\top} r_i$, a
+multiple of $3$, so $\mathbf{1}^{\!\top} s' \equiv \mathbf{1}^{\!\top} s
+\pmod 3$; and the surviving coefficients lie in $[0,3)$, so
+$\mathbf{1}^{\!\top} s' \le \max_{q \in V}\mathbf{1}^{\!\top} q +
+3 \sum_i \mathbf{1}^{\!\top} r_i = B$.
+\end{proof}
+
+$V$ and $R$ are computed exactly, in integer arithmetic, by the
+double-description method on the homogenisation of $P$. If $V$ is empty then
+$P$ is empty over the rationals and a fortiori over the integers.
+
+\begin{lemma}[soundness]\label{lem:blowsound}
+Fix a quotient $H$ and a regime assignment of total cost at most $E$. Deciding,
+for each residue $\rho \in \{0,1,2\}$, whether $P$ contains an integer point
+with $\mathbf{1}^{\!\top}s \le B$ and $\mathbf{1}^{\!\top}s \equiv \rho$
+decides, for that instance, whether a member of $\mathcal{F}$ with excess at
+most $E$ and $n \equiv \rho \pmod 3$ exists \emph{at any $n$ whatsoever}.
+\end{lemma}
+
+\begin{proof}
+Soundness in one direction is Lemma~\ref{lem:capopt}: a size vector in $P$
+yields a member with excess $\sum_a g(\Delta_a, n_a) \le E$ at the minimising
+cap. In the other direction, a member with excess $\le E$ has, by
+Lemma~\ref{lem:regimes}, every class in one of the finitely many regimes, so
+its size vector lies in $P$ for the corresponding assignment; and by
+Lemma~\ref{lem:mw} if any such integer point exists at residue $\rho$ then one
+exists below $B$. So the bounded search is exhaustive over all $n$.
+\end{proof}
+
+\subsection*{B.5 The conserving quotients, by hand}
+
+One family needs no computation. Column $c$ of $N$ sums to
+$|\{a : c \in C(a)\}| - \deg^-_H(c)$, so
+$\mathbf{1}^{\!\top} N = 0$ --- call $H$ \emph{conserving} --- iff
+$\sum_a \Delta_a = 0$ for every size vector.
+
+\begin{proposition}
+If $H$ is conserving then every $G = H[n;c]$ has $\exc(G) \ge m$, for every
+size vector and every cap vector.
+\end{proposition}
+
+\begin{proof}
+Let $S = \{a : \Delta_a \ge 0\}$. Since $\sum_a \Delta_a = 0$ and each
+$a \notin S$ has $\Delta_a \le -1$, we get
+$\sum_{a \in S} \Delta_a = -\sum_{a \notin S} \Delta_a \ge m - |S|$. Each
+$a \in S$ contributes at least $\Delta_a + 1$ by Lemma~\ref{lem:regimes}(i),
+so $\exc \ge |S| + \sum_{a \in S} \Delta_a \ge |S| + (m - |S|) = m$.
+\end{proof}
+
+Of the $4\,313$ strongly connected oriented quotients with $3 \le m \le 6$
+exactly $7$ conserve ($1, 1, 2, 3$ for $m = 3,4,5,6$); for $m \ge 4$ this
+already excludes excess $\le 3$ outright, and for $m = 3$ it is the classical
+hand computation for the directed triangle.
+
+\subsection*{B.6 The computation, and what it returned}
+
+Enumerating the $4\,313$ quotients and, for each, every assignment of the
+regimes of B.2 with total cost at most $3$, gives $385\,695$ instances. Of
+these $385\,622$ are empty already over the rationals; none is undecided;
+$73$ are feasible. The largest derived bound $B$ over all instances is $222$.
+Every feasible instance has excess exactly $3$ and $n \equiv 0 \pmod 3$, with
+profile three D0M classes and the rest NEG; no instance with excess $0$, $1$
+or $2$ is feasible for any $n$. Raising the budget to $4$ gives
+$1\,052\,936$ instances and $972$ feasible ones ($73$ with excess $3$, $899$
+with excess $4$), excess $4$ occurring in all three residues, and the smallest
+$n$ carrying excess $\le 4$ anywhere in the family is $24$.
+
+Four bounded cross-checks accompany the computation
+(\texttt{make verify-t9}), each of which would fail loudly if the reduction
+above were wrong: the $73$ feasible size vectors are expanded into explicit
+graphs and re-scored ($73/73$ agree); $2\,321\,385$ blow-ups at small orders
+are evaluated exhaustively, finding no excess $\le 3$ with $3 \nmid n$; all
+$357$ irreducible elements of the recession cones are checked to have
+coordinate sum $\equiv 0 \pmod 3$; and all $146$ base models at residues $1$
+and $2$ are confirmed infeasible.
+
+\subsection*{B.7 What is not covered}
+
+Quotients on $m \ge 7$ vertices, and every construction that is not a
+capped-tournament blow-up in the sense of the definition above --- in
+particular every blow-up whose intra-class structure is not a truncated
+transitive tournament. That is almost all oriented graphs, which is why the
+result is stated as a property of $\mathcal{F}$ and not as a lower bound.
 
 \bibliographystyle{amsalpha}
 \bibliography{refs}
